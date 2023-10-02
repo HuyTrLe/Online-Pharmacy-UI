@@ -29,7 +29,7 @@ namespace pj3_ui.Controllers
             return View();
         }
 
-        public ActionResult Services()
+        public ActionResult Shop()
         {
 
             return View();
