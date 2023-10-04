@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Home/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <html lang="zxx">
@@ -13,6 +13,7 @@
         Dentile a Medical Category Bootstrap Responsive Website Template | About :: W3layouts
     </title>
     <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/User/Index.css">
     <link rel="stylesheet" href="~/assets/css/style-starter.css">
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
@@ -25,18 +26,17 @@
             <img src="logo.png" alt="Logo">
         </div>
         <h2>Đăng nhập</h2>
-        <form action="/your-login-endpoint" method="POST">
-            <div class="form-group">
-                <label for="username">Tên đăng nhập</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Đăng nhập</button>
-        </form>
+        <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text"  id="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password"  id="password">
+        </div>
+        <button type="submit" id="btnlogin">Đăng nhập</button>
     </div>
 </body>
 
 </html>
+<script src="~/js/User/Login.js"></script>

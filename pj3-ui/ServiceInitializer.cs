@@ -19,6 +19,7 @@ namespace pj3_ui
 
             services.AddSingleton(typeof(AppSetting), _appSettings);
             services.AddSingleton<IHomeService, HomeService>();
+            services.AddSingleton<IUserService, UserService>();
 
         }
     }
