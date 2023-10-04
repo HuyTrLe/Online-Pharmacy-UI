@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Home/_Layout.cshtml";
+}
+
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Dentile a Medical Category Bootstrap Responsive Website Template | About :: W3layouts
+    </title>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <h2>Đăng nhập</h2>
+        <form action="/your-login-endpoint" method="POST">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Đăng nhập</button>
+        </form>
+    </div>
+</body>
+
+</html>
