@@ -20,6 +20,7 @@
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
+                <a><img src="~/assets/images/pharmacy.png" alt=" " width="50" height="50" /></a>
                 <a class="navbar-brand" href="@Url.Action("Index","Home")"><span>XYZ</span>Pharma Co.</a>
 
 
@@ -48,38 +49,21 @@
                         <li class="nav-item">
                             @Html.ActionLink("Recruitment", "Recruitment", "Home", null, new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
-                        </li>
+                        
                     </ul>
                     <!--/search-right-->
 
-                    <div class="search-right">
-                        <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
-                        <!-- search popup -->
-
-                        <div id="search" class="pop-overlay">
-                            <div class="popup">
-
-                                <form action="#" method="post" class="search-box">
-                                    <input type="search" placeholder="Saerch your Keyword" name="search"
-                                           required="required" autofocus="">
-                                    <button type="submit" class="btn">
-                                        <span class="fa fa-search"
-                                              aria-hidden="true"></span>
-                                    </button>
-                                </form>
-
-                            </div>
-                            <a class="close" href="#close">×</a>
-                        </div>
-                        <!-- /search popup -->
-                    </div>
+                   
 
                     <!--//search-right-->
-                    <div class="call-support">
-                        <p>Call us for any question</p>
-                        <h5>121-345-64369</h5>
+                    <div >
+                        
+                        <ul>
+                            <a><img src="~/assets/images/login.png" alt=" " width="25" height="25" /></a>
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        </ul>
                     </div>
 
                     @*<div >
