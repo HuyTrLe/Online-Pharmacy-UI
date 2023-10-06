@@ -17,8 +17,8 @@ namespace pj3_ui.Controllers
 
         public IActionResult Index()
         {
-            var result = _homeService.Value.GetMovies();
-            return View(result);
+            
+            return View();
         }
 
 

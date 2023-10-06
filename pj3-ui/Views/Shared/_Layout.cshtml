@@ -14,7 +14,8 @@
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
     @*jQuery*@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    @*sweetalert2*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -52,6 +53,9 @@
                             @Html.ActionLink("Recruitment", "Recruitment", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
+                            @{
+
+                            }
                             @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
                         </li>
                     </ul>
