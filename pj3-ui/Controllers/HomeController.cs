@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using pj3_ui.Models;
+using pj3_ui.Models.User;
 using pj3_ui.Service.Home;
 using System.Diagnostics;
 
@@ -9,19 +10,30 @@ namespace pj3_ui.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Lazy<IHomeService> _homeService;
-        public HomeController(ILogger<HomeController> logger,IHomeService homeService)
+        private readonly Lazy<IUserService> _userService;
+        public HomeController(ILogger<HomeController> logger,IHomeService homeService,IUserService userService)
         {
             _homeService = new Lazy<IHomeService>(() => homeService);
+            _userService = new Lazy<IUserService>(() => userService);
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            
+            if (TempData["User"] != null)
+            {
+                ViewBag.UserName = TempData["User"];
+            }
             return View();
         }
 
+        public UserModel Login(Login login)
+        {
 
+            var result = _userService.Value.Login(login);
+            TempData["User"] = result.UserName;
+            return result;
+        }
 
         public ActionResult About()
         {

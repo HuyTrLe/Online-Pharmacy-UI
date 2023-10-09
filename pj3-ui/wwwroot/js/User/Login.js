@@ -6,7 +6,7 @@
     formData.append("Password", password);
     $.ajax({
         type: "POST",
-        url: "/User/Login",
+        url: "/Home/Login",
         data: formData,
         dataType: 'json',
         processData: false, 
@@ -14,8 +14,8 @@
         success: function (result) {
             if (result != null && result.id > 0) {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Your work has been saved',
+                    icon: 'sucess!',
+                    title: 'Login Success!',
                     showConfirmButton: true
                 }).then((result) => {
                     window.location = "/Home/Index";

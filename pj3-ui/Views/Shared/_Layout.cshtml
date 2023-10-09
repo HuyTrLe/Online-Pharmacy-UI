@@ -53,10 +53,22 @@
                             @Html.ActionLink("Recruitment", "Recruitment", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @{
-
+                            @if(ViewBag.UserName != null)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@ViewBag.UserName</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">Link 1</a>
+                                        <a href="#">Link 2</a>
+                                        <a href="#">Link 3</a>
+                                    </div>
+                                </div>
+                                  
                             }
-                            @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
+                            else
+                            {
+                                @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
+                            }
                         </li>
                     </ul>
                     <!--/search-right-->
