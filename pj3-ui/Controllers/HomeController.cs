@@ -44,8 +44,28 @@ namespace pj3_ui.Controllers
 
 			return View();
 		}
+        public ActionResult AdminIndex()
+        {
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            return View();
+        }
+        public ActionResult AdminRegister()
+        {
+
+            return View();
+        }
+        public ActionResult AdminForgotPassword()
+        {
+
+            return View();
+        }
+        public ActionResult AdminTables()
+        {
+
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

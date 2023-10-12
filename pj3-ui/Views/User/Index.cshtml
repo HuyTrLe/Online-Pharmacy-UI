@@ -18,7 +18,7 @@
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
-    <link href="./assets/css/all.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -64,7 +64,10 @@
                                                 Login
                                             </a>
                                             <hr>
-                                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <a href="#" class="btn btn-google btn-user btn-block">
+                                            <li class="nav-item">
+                                                @Html.ActionLink("Admin", "AdminIndex", "Home", null, new { @class = "nav-link" })
+                                            </li>
                                                 <i class="fab fa-google fa-fw"></i> Login with Google
                                             </a>
                                             <a href="index.html" class="btn btn-facebook btn-user btn-block">
