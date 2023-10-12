@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/wwwroot/assets/css/style-starter.css">
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
-    @*jQuery*@
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -23,6 +23,7 @@
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
+                <a><img src="~/assets/images/pharmacy.png" alt=" " width="70" height="70" /></a>
                 <a class="navbar-brand" href="@Url.Action("Index","Home")"><span>XYZ</span>Pharma Co.</a>
 
 
@@ -54,12 +55,12 @@
                         <li class="nav-item">
                             @Html.ActionLink("Recruitment", "Recruitment", "Home", null, new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
-                        </li>
+                        
+                       
                     </ul>
                     <!--/search-right-->
 
+<<<<<<< HEAD
                     <div class="search-right">
                         <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
                         <!-- search popup -->
@@ -81,6 +82,22 @@
                         </div>
                         <!-- /search popup -->
                     </div>
+=======
+                    
+
+                    <!--//search-right-->
+                    <div>
+                        
+
+                        <ul>
+                            <a><img src="~/assets/images/login.png" alt=" " width="50" height="50" /></a>
+                        <li >
+                            @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
+                        </li>
+                        </ul>
+                    </div>
+
+>>>>>>> main
                     @*<div >
                     <button id="showLoginFormButton" class="btn btn-dark">Login</button>
 
