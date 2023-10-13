@@ -27,13 +27,23 @@ namespace pj3_ui.Controllers
         {
             var userId = HttpContext.Session.GetInt32("UserID").Value;
             Login user = new Login() { ID = userId ,Email = string.Empty, Password = string.Empty};
-            var userResult = _userService.Value.GetUser(user);
+            var userResult = _userService.Value.GetUser(user);        
             return View(userResult);
         }
         public IActionResult DetailUpdate()
         {
-           
-            return View();
+            var userId = HttpContext.Session.GetInt32("UserID").Value;
+            Login user = new Login() { ID = userId, Email = string.Empty, Password = string.Empty };
+            var userResult = _userService.Value.GetUser(user);
+            return View(userResult);
+        }
+
+        public IActionResult SaveUser(UserModelResult userModelResult)
+        {
+            var userId = HttpContext.Session.GetInt32("UserID").Value;
+            Login user = new Login() { ID = userId, Email = string.Empty, Password = string.Empty };
+            var userResult = _userService.Value.GetUser(user);
+            return View(userResult);
         }
 
 

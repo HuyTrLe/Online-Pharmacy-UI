@@ -39,5 +39,18 @@ namespace pj3_ui.Service.Home
             }
             return null;
         }
+
+        public int UpdateUser(UserModelResult userModelResult)
+        {
+            var callRespones = CallApi<UserModelResult, HttpResultObject>.PostAsJsonAsync(userModelResult, _appSetting.UrlApi, _appSetting.UserUrl.UpdateUser);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                //var result = jObject["Data"].va;
+                return 1;
+            }
+            return 0;
+        }
     }
 }

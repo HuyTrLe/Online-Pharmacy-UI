@@ -2762,7 +2762,6 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
 }
-
 .btn-primary {
   color: #fff;
   background-color: #d63447;
@@ -17643,6 +17642,7 @@ button span.fa-angle-up {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
 /*-- /move top --*/
 /*# sourceMappingURL=style-freedom.css
 /*--//footer--*/
