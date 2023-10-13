@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NuGet.Protocol.Plugins;
 using pj3_ui.Models;
 using pj3_ui.Models.User;
 
@@ -12,6 +13,20 @@ namespace pj3_ui.Service.Home
         {
             _appSetting = appSetting;
         }
+
+        public UserModelResult GetUser(Login user)
+        {
+            var callRespones = CallApi<Login, HttpResultObject>.PostAsJsonAsync(user, _appSetting.UrlApi, _appSetting.UserUrl.GetUser);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<UserModelResult>();
+                return result;
+            }
+            return null;
+        }
+
         public UserModel Login(Login login)
         {
             var callRespones = CallApi<Login,HttpResultObject>.PostAsJsonAsync(login, _appSetting.UrlApi, _appSetting.UserUrl.Login);

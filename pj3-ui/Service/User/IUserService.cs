@@ -6,5 +6,6 @@ namespace pj3_ui.Service.Home
     public interface IUserService
     {
         UserModel Login(Login login);
+        UserModelResult GetUser(Login user);
     }
 }

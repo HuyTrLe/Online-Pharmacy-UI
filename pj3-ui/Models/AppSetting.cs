@@ -13,5 +13,6 @@
     public class UserUrl
     {
         public string Login { get; set; }
+        public string GetUser { get; set; }
     }
 }

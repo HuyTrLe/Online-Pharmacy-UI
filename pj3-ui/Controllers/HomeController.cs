@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace pj3_ui.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Lazy<IHomeService> _homeService;
@@ -31,7 +31,10 @@ namespace pj3_ui.Controllers
         {
 
             var result = _userService.Value.Login(login);
-            TempData["User"] = result.UserName;
+            if(result != null)
+            {
+               SetUserLogin(result);
+            }             
             return result;
         }
 
