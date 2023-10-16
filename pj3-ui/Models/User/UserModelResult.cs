@@ -5,4 +5,5 @@
         public UserModel UserModel { get; set; }
         public List<Education> Education { get; set; }
     }
+  
 }

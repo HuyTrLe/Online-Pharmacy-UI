@@ -23,9 +23,18 @@ namespace pj3_ui.Controllers
            
             return View();
         }
+
+        public IActionResult Register()
+        {
+
+            return View();
+        }
         public IActionResult Detail()
         {
+            
             var userId = HttpContext.Session.GetInt32("UserID").Value;
+            if (userId == null)
+                return Redirect("Index");
             Login user = new Login() { ID = userId ,Email = string.Empty, Password = string.Empty};
             var userResult = _userService.Value.GetUser(user);        
             return View(userResult);
@@ -33,16 +42,24 @@ namespace pj3_ui.Controllers
         public IActionResult DetailUpdate()
         {
             var userId = HttpContext.Session.GetInt32("UserID").Value;
+            if (userId == null)
+                return Redirect("Index");
             Login user = new Login() { ID = userId, Email = string.Empty, Password = string.Empty };
             var userResult = _userService.Value.GetUser(user);
             return View(userResult);
         }
 
-        public IActionResult SaveUser(UserModelResult userModelResult)
+        public IActionResult UpdateUser(UserModelResult userModelResult)
         {
-            var userId = HttpContext.Session.GetInt32("UserID").Value;
-            Login user = new Login() { ID = userId, Email = string.Empty, Password = string.Empty };
-            var userResult = _userService.Value.GetUser(user);
+            foreach(var item in userModelResult.Education)
+            {
+                item.UserID = HttpContext.Session.GetInt32("UserID").Value;
+                item.From = DateTime.Now;
+                item.To = DateTime.Now;
+            }
+            userModelResult.UserModel.ID = HttpContext.Session.GetInt32("UserID").Value;
+            
+            var userResult = _userService.Value.UpdateUser(userModelResult);
             return View(userResult);
         }
 
