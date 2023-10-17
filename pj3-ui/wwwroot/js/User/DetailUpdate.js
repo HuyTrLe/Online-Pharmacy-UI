@@ -31,7 +31,7 @@
             valuesEdu.SchoolType = schoolElement.querySelector("input#SchoolType").value;
             valuesEdu.Degree = schoolElement.querySelector("input#Degree").value;
             valuesEdu.From = schoolElement.querySelector("input#From").value;
-            valuesEdu.To = schoolElement.querySelector("input#To").value;
+            valuesEdu.To = schoolElement.querySelector("input#To").value;          
             ListEducation.push(valuesEdu);
         }
         //
@@ -41,39 +41,77 @@
         valueUser.Email = document.getElementById("Email").value;
         valueUser.PhoneNumber = document.getElementById("PhoneNumber").value;
         valueUser.Address = document.getElementById("Address").value;
-        let param = {
-            UserModel: valueUser,
-            Education: ListEducation
-        }
-        //User Infor
-        $.ajax({
-            type: "POST",
-            url: "/User/UpdateUser",
-            data: param,
-            dataType: 'json',
-            success: function (result) {
-                if (result != null && result.id > 0) {
-                    Swal.fire({
-                        icon: 'sucess!',
-                        title: 'Login Success!',
-                        showConfirmButton: true
-                    }).then((result) => {
-                        window.location = "/Home/Index";
-                    })
+        if (validateEducation(ListEducation, index)) {
 
+            if (validateUser) {
+                let param = {
+                    UserModel: valueUser,
+                    Education: ListEducation
                 }
-                else {
-                    Swal.fire('Email or Password is incorrect')
-                }
+                //User Infor
+                $.ajax({
+                    type: "POST",
+                    url: "/User/UpdateUser",
+                    data: param,
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result > 0) {
+                            Swal.fire({
+                                icon: 'sucess!',
+                                title: 'Update Success!',
+                                showConfirmButton: true
+                            }).then((result) => {
+                                window.location = "/Home/Index";
+                            })
 
+                        }
+                        else {
+                            Swal.fire('Update fail')
+                        }
+
+                    }
+                })
             }
-        })
-
-
+            else {
+                Swal.fire({
+                    title: 'Please fill all field User',
+                    showConfirmButton: true
+                }).then(() => {
+                    return;
+                })
+            }
+            
+        }
+        else {
+            Swal.fire({
+                title: 'Please fill all field Education',
+                showConfirmButton: true
+            }).then(() => {
+                return;
+            })
+        }
         
     });
 });
+function validateEducation(ListEducation, index) {
+    for (var i = 0; i <= index; i++) {
+        if (ListEducation[i].SchoolName == "" || ListEducation[i].SchoolType == "" || ListEducation[i].Degree == "" || ListEducation[i].From == "" || ListEducation[i].To == "")
+            return false;
+        if (ListEducation[i].SchoolName == undefined || ListEducation[i].SchoolType == undefined || ListEducation[i].Degree == undefined || ListEducation[i].From == undefined || ListEducation[i].To == undefined)
+            return false;
+    }
+    return true;
 
+}
+function validateUser(UserName, Email, PhoneNumber, Address) {
+    if (UserName == "" || Email == "" || PhoneNumber == "" || Address == "" )
+        return false;
+    if (UserName == undefined || Email == undefined || PhoneNumber == undefined || Address == undefined )
+        return false;
+
+    return true;
+
+}
 function GetIndexHighest() {
 
     var highestIndex = -1;

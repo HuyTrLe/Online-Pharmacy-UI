@@ -8,5 +8,6 @@ namespace pj3_ui.Service.Home
         UserModel Login(Login login);
         UserModelResult GetUser(Login user);
         int UpdateUser(UserModelResult userModelResult);
+        int InsertUser(UserModel user);
     }
 }

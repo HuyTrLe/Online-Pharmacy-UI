@@ -27,6 +27,18 @@ namespace pj3_ui.Service.Home
             return null;
         }
 
+        public int InsertUser(UserModel user)
+        {
+            var callRespones = CallApi<UserModel, HttpResultObject>.PostAsJsonAsync(user, _appSetting.UrlApi, _appSetting.UserUrl.InsertUser);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return 1;
+            }
+            return 0;
+        }
+
         public UserModel Login(Login login)
         {
             var callRespones = CallApi<Login,HttpResultObject>.PostAsJsonAsync(login, _appSetting.UrlApi, _appSetting.UserUrl.Login);
@@ -42,7 +54,6 @@ namespace pj3_ui.Service.Home
 
         public int UpdateUser(UserModelResult userModelResult)
         {
-            var result = JsonConvert.SerializeObject(userModelResult);
             var callRespones = CallApi<UserModelResult, HttpResultObject>.PostAsJsonAsync(userModelResult, _appSetting.UrlApi, _appSetting.UserUrl.UpdateUser);
             if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
             {

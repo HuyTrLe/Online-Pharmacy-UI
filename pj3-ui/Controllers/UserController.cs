@@ -26,7 +26,6 @@ namespace pj3_ui.Controllers
 
         public IActionResult Register()
         {
-
             return View();
         }
         public IActionResult Detail()
@@ -49,7 +48,7 @@ namespace pj3_ui.Controllers
             return View(userResult);
         }
 
-        public IActionResult UpdateUser(UserModelResult userModelResult)
+        public int UpdateUser(UserModelResult userModelResult)
         {
             foreach(var item in userModelResult.Education)
             {
@@ -60,9 +59,13 @@ namespace pj3_ui.Controllers
             userModelResult.UserModel.ID = HttpContext.Session.GetInt32("UserID").Value;
             
             var userResult = _userService.Value.UpdateUser(userModelResult);
-            return View(userResult);
+            return userResult;
         }
-
+        public int InsertUser(UserModel user)
+        {
+            var userResult = _userService.Value.InsertUser(user);
+            return userResult;
+        }
 
     }
 }

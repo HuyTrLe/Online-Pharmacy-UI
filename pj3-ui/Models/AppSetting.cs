@@ -15,5 +15,6 @@
         public string Login { get; set; }
         public string GetUser { get; set; }
         public string UpdateUser { get; set; }
+        public string InsertUser { get; set; }
     }
 }
