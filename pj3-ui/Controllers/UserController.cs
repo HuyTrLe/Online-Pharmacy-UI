@@ -28,6 +28,10 @@ namespace pj3_ui.Controllers
         {
             return View();
         }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
         public IActionResult Detail()
         {
             
@@ -61,9 +65,39 @@ namespace pj3_ui.Controllers
             var userResult = _userService.Value.UpdateUser(userModelResult);
             return userResult;
         }
+        public int CheckPassword(ChangePassword changePassword)
+        {
+            changePassword.UserID = HttpContext.Session.GetInt32("UserID").Value;
+            var userResult = _userService.Value.CheckPassword(changePassword);
+            return userResult;
+        }
+        public int UpdatePassword(ChangePassword changePassword)
+        {
+            changePassword.UserID = HttpContext.Session.GetInt32("UserID").Value;
+            var userResult = _userService.Value.ChangePassword(changePassword);
+            return userResult;
+        }
         public int InsertUser(UserModel user)
         {
             var userResult = _userService.Value.InsertUser(user);
+            return userResult;
+        }
+        public int UploadFile(UploadFile upload)
+        {
+            var userResult = 1;
+            if (upload.PdfFile == null || upload.PdfFile.Length == 0)
+            {
+                // Handle the case where the uploaded file is empty or null.
+                return 0;
+            }
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + upload.PdfFile.FileName;
+            string PathFile = @"wwwroot\assets\images\User";
+            string filePath = Path.Combine(PathFile, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                upload.PdfFile.CopyTo(stream);
+            }
             return userResult;
         }
 

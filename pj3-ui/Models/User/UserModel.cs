@@ -18,4 +18,13 @@
         public string Email { get; set; }
         public string Password { get; set; }
     }
+    public class ChangePassword
+    {
+        public int UserID { get; set; }
+        public string Password { get; set; }
+    }
+    public class UploadFile
+    {
+        public IFormFile PdfFile { get; set; }
+    }
 }

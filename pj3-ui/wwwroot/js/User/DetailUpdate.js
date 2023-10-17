@@ -1,5 +1,51 @@
 ﻿$(document).ready(function () {
 
+    document.getElementById("chooseFileButton").addEventListener("click", function () {
+        document.getElementById("fileInput").click();
+    });
+
+    document.getElementById("fileInput").addEventListener("change", function () {
+        const pdfViewer = document.getElementById("pdfViewer");
+        const fileInput = document.getElementById("fileInput");
+
+        if (fileInput.files && fileInput.files[0]) {
+            const pdfFile = fileInput.files[0];
+            const fileURL = URL.createObjectURL(pdfFile);
+
+            pdfViewer.src = fileURL;
+        }
+        var pdfFile = fileInput.files[0];
+        var pdf = new FormData();
+        pdf.append("PdfFile", pdfFile);
+        $.ajax({
+            type: "POST",
+            url: "/User/UploadFile",
+            data: pdf,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result > 0) {
+                    Swal.fire({
+                        icon: 'sucess!',
+                        title: 'Update Success!',
+                        showConfirmButton: true
+                    }).then((result) => {
+                        window.location = "/Home/Index";
+                    })
+
+                }
+                else {
+                    Swal.fire('Update fail')
+                }
+
+            }
+        })
+
+
+    });
+
+
     $("#btnAddEducation").on("click", function () {
         let index = GetIndexHighest();
         var newIndex = index; // Lấy số lượng phần tử đã có trong "Edu."

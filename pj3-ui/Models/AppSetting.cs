@@ -18,6 +18,8 @@
         public string GetUser { get; set; }
         public string UpdateUser { get; set; }
         public string InsertUser { get; set; }
+        public string CheckPassword { get; set; }
+        public string ChangePassword { get; set; }
     }
 
     public class FeedbackUrl

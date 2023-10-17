@@ -14,6 +14,30 @@ namespace pj3_ui.Service.Home
             _appSetting = appSetting;
         }
 
+        public int ChangePassword(ChangePassword ChangePassword)
+        {
+            var callRespones = CallApi<ChangePassword, HttpResultObject>.PostAsJsonAsync(ChangePassword, _appSetting.UrlApi, _appSetting.UserUrl.ChangePassword);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
+        public int CheckPassword(ChangePassword CheckPassword)
+        {
+            var callRespones = CallApi<ChangePassword, HttpResultObject>.PostAsJsonAsync(CheckPassword, _appSetting.UrlApi, _appSetting.UserUrl.CheckPassword);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
         public UserModelResult GetUser(Login user)
         {
             var callRespones = CallApi<Login, HttpResultObject>.PostAsJsonAsync(user, _appSetting.UrlApi, _appSetting.UserUrl.GetUser);
@@ -34,7 +58,7 @@ namespace pj3_ui.Service.Home
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
                 JObject jObject = JObject.Parse(data);
-                return 1;
+                return Convert.ToInt32(jObject["Data"]);
             }
             return 0;
         }
@@ -59,7 +83,7 @@ namespace pj3_ui.Service.Home
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
                 JObject jObject = JObject.Parse(data);
-                return 1;
+                return Convert.ToInt32(jObject["Data"]);
             }
             return 0;
         }
