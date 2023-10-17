@@ -1,5 +1,7 @@
 ﻿using pj3_ui.Models;
+using pj3_ui.Service.Category;
 using pj3_ui.Service.Home;
+using pj3_ui.Service.Product;
 
 namespace pj3_ui
 {
@@ -21,6 +23,7 @@ namespace pj3_ui
             services.AddSingleton<IHomeService, HomeService>();
             services.AddSingleton<IUserService, UserService>();
 			services.AddSingleton<IFeedbackService, FeedbackService>();
-		}
+            services.AddSingleton<ICategoryService, CategoryService>();
+        }
 	}
 }

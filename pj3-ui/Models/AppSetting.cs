@@ -7,6 +7,8 @@
         public string UrlApi { get; set; }
 
 		public FeedbackUrl FeedbackUrl { get; set; }
+
+        public CategoryUrl CategoryUrl { get; set; }
 	}
 	public class ApiUrl
     {
@@ -23,5 +25,11 @@
     public class FeedbackUrl
     {
         public string InsertFeedback { get; set; }
+    }
+
+    public class CategoryUrl
+    {
+        public string GetCategory { get; set; }
+        public string InsertCategory { get; set; }
     }
 }
