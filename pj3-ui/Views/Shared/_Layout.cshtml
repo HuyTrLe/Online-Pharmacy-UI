@@ -29,6 +29,7 @@
         <!--/nav-->
         <nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
             <div class="container">
+                <a><img src="~/assets/images/pharmacy.png" alt=" " width="70" height="70" /></a>
                 <a class="navbar-brand" href="@Url.Action("Index","Home")"><span>XYZ</span>Pharma Co.</a>
 
 
@@ -55,22 +56,15 @@
                             @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Recruitment", "Recruitment", "Home", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Quote Us", "Index", "Feedback", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                           @if (!string.IsNullOrEmpty(username))
-                            {
-                                @Html.ActionLink("Welcome, " + @username, "Detail", "User", null, new { @class = "nav-link" })
-                               
-                            }                         
-                            else
-                            {
-                                @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
-                            }
+                         
                         </li>
+                        
+                       
                     </ul>
                     <!--/search-right-->
-
                     <div class="search-right">
                         <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
                         <!-- search popup -->
@@ -92,11 +86,25 @@
                         </div>
                         <!-- /search popup -->
                     </div>
+                    
 
                     <!--//search-right-->
-                    <div class="call-support">
-                        <p>Call us for any question</p>
-                        <h5>121-345-64369</h5>
+                    <div>
+                        
+
+                        <ul>
+                        <li >
+                                @if (!string.IsNullOrEmpty(username))
+                                {
+                                    @Html.ActionLink("Welcome, " + @username, "Detail", "User", null, new { @class = "nav-link" })
+
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Login", "Index", "User", null, new { @class = "nav-link" })
+                                }
+                        </li>
+                        </ul>
                     </div>
 
                     @*<div >
