@@ -23,5 +23,10 @@
     public class FeedbackUrl
     {
         public string InsertFeedback { get; set; }
-    }
+
+        public string GetFeedback { get; set; }
+
+        public string GetFeedBackById { get; set; }
+
+	}
 }
