@@ -18,10 +18,22 @@ namespace pj3_ui.Controllers
 			return View();
 		}
 
+		public IActionResult IndexAdmin() 
+		{
+            var result = _feedbackService.Value.GetFeedback();
+			return View(result);
+		}
+
 		public int InsertFeedback(FeedbackModel feedbackModel)
 		{
             var result = _feedbackService.Value.InsertFeedback(feedbackModel);
 
+			return result;
+		}
+
+		public int GetFeedBackById(FeedbackModel feedbackModel)
+		{
+			var result = _feedbackService.Value.GetFeedBackById(feedbackModel);
 			return result;
 		}
 	}

@@ -22,10 +22,16 @@
         contentType: false,
         success: function (result) {
             if (result > 0) {
-                alert("Login complete");              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Thanks for your feedback, we will contact you if it necessary!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/';
+                    }
+                });             
             }
-
-
         }
     })
 })
