@@ -25,6 +25,7 @@
     public class FeedbackUrl
     {
         public string InsertFeedback { get; set; }
+<<<<<<< HEAD
     }
 
     public class CategoryUrl
@@ -32,4 +33,12 @@
         public string GetCategory { get; set; }
         public string InsertCategory { get; set; }
     }
+=======
+
+        public string GetFeedback { get; set; }
+
+        public string GetFeedBackById { get; set; }
+
+	}
+>>>>>>> main
 }
