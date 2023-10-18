@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using pj3_ui.Models;
 using pj3_ui.Models.Category;
-using pj3_ui.Models.User;
 
 namespace pj3_ui.Service.Category
 {

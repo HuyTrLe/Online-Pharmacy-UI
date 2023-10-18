@@ -1,9 +1,44 @@
-﻿using pj3_ui.Models.Product;
+﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using pj3_ui.Models;
+using pj3_ui.Models.Product;
 
 namespace pj3_ui.Service.Product
 {
     public class ProductService : IProductService
     {
-       
+
+        private AppSetting _appSetting;
+        public ProductService(AppSetting appSetting)
+        {
+            _appSetting = appSetting;
+        }
+        public int DeleteProduct(ProductModel product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ProductModel> GetProduct()
+        {
+            var callRespones = CallApi<IEnumerable<ProductModel>, HttpResultObject>.PostAsJsonAsync(null, _appSetting.UrlApi, _appSetting.ProductUrl.GetProduct);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<ProductModel>>();
+                return result;
+            }
+            return null;
+        }
+
+        public int InsertProduct(ProductModel product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateProduct(ProductModel product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

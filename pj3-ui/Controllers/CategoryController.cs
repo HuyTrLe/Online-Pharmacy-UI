@@ -16,5 +16,11 @@ namespace pj3_ui.Controllers
             var result = _categoryService.Value.GetCategory();
             return View(result);
         }
+        //public IActionResult ViewProducts(int categoryId)
+        //{
+        //    var products = _categoryService.Value.GetProductsByCategoryId(categoryId); // Sử dụng phương thức để lấy sản phẩm dựa trên categoryId
+        //    return View("Shop", products); // Trả về trang Shop.cshtml với danh sách sản phẩm
+        //}
+
     }
 }

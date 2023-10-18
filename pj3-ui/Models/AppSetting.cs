@@ -9,6 +9,10 @@
 		public FeedbackUrl FeedbackUrl { get; set; }
 
         public CategoryUrl CategoryUrl { get; set; }
+
+        public SpecificationUrl SpecificationUrl { get; set; }
+
+        public ProductUrl ProductUrl { get; set; }
 	}
 	public class ApiUrl
     {
@@ -25,20 +29,29 @@
     public class FeedbackUrl
     {
         public string InsertFeedback { get; set; }
-<<<<<<< HEAD
-    }
-
-    public class CategoryUrl
-    {
-        public string GetCategory { get; set; }
-        public string InsertCategory { get; set; }
-    }
-=======
 
         public string GetFeedback { get; set; }
 
         public string GetFeedBackById { get; set; }
 
-	}
->>>>>>> main
+    }
+
+    public class CategoryUrl
+    {
+        public string GetCategory { get; set; }
+        
+    }
+
+
+        
+    public class SpecificationUrl 
+    {
+        public string GetSpecification {get;set;}
+    }
+
+    public class ProductUrl
+    {
+        public string GetProduct { get;set;}
+    }
+
 }
