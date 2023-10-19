@@ -1,4 +1,5 @@
 ﻿using pj3_ui.Models;
+using pj3_ui.Service.Career;
 using pj3_ui.Service.Home;
 
 namespace pj3_ui
@@ -21,6 +22,7 @@ namespace pj3_ui
             services.AddSingleton<IHomeService, HomeService>();
             services.AddSingleton<IUserService, UserService>();
 			services.AddSingleton<IFeedbackService, FeedbackService>();
-		}
+            services.AddSingleton<ICareerService, CareerService>();
+        }
 	}
 }

@@ -2,13 +2,15 @@
 
 @model UserModelResult
 
-<div class="container rounded bg-white mt-5 mb-5">
+<div class="container rounded bg-white mt-5 mb-5 fullwidth">
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                 @Html.ActionLink("Edit Profile", "DetailUpdate", "User", null, new { @class = "btn btn-primary profile-button" })
                 <br />
                 @Html.ActionLink("Change Password", "ChangePassword", "User", null, new { @class = "btn btn-primary profile-button" })
+                <br />
+                @Html.ActionLink("Log Out", "LogOut", "User", null, new { @class = "btn btn-primary profile-button" })
                @*  <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="btnEditProfile">Edit Profile</button></div> *@
             </div>
         </div>
@@ -23,11 +25,15 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value="@Model.UserModel.PhoneNumber" readonly></div>
-                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address line 1" value="@Model.UserModel.Address" readonly></div>
+                    <div class="col-md-12"><label class="labels">Address</label><textarea class="form-control" placeholder="enter address" id="Address" readonly>@Model.UserModel.Address</textarea></div>
                 </div>  
-                <div id="pdfContainer">
-                    <iframe src="D:\\LearnNew\\pj3-ui\\pj3-ui\\wwwroot\\assets\\images\\User\\9d50929f-576e-45c1-a193-a94244c2eac8_23100610000199.pdf" id="pdfViewer" style="width: 100%; height: 400px;"></iframe>
+                <div class="row mt-3">
+                    <div id="pdfContainer">
+                        <label class="labels">Resume</label>
+                        <iframe src="/assets/images/User/@Model.UserModel.FileName" type="application/pdf" id="pdfViewer" style="width: 100%; height: 400px;"></iframe>
+                    </div>
                 </div>
+               
             </div>
         </div>
         <div class="col-md-4">
@@ -41,8 +47,8 @@
                                 <div class="col-md-6"><label class="labels">School Name</label><input type="text" class="form-control" value="@item.SchoolName"></div>
                                 <div class="col-md-6"><label class="labels">Type</label><input type="text" class="form-control" value="@item.SchoolType"></div>
                                 <div class="col-md-9"><label class="labels">Degree</label><input type="text" class="form-control" value="@item.Degree"></div>
-                                <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" value="@item.From"></div>
-                                <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control" value="@item.To"></div>
+                                <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" value="@item.From.ToString("yyyy-MM-dd")"></div>
+                                <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control" value="@item.To.ToString("yyyy-MM-dd")"></div>
                             </div>
                         }
                     }

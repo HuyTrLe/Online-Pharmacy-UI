@@ -1,4 +1,9 @@
-﻿@{
+﻿@using pj3_ui.Models.Career;
+
+@model CareerModel
+
+
+@{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,7 +11,7 @@
 
     <nav id="breadcrumbs" class="breadcrumbs">
         <div class="container page-wrapper">
-            <a href="index.html">Home</a> » <span class="breadcrumb_last" aria-current="page">Career Detail</span>
+            <span>Home</span> » <span class="breadcrumb_last" aria-current="page">Career Detail</span>
         </div>
     </nav>
 
@@ -22,11 +27,12 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h10 style="font-weight:20px">
-                            OPERATIONS COORDINATOR, DIGITAL BUSINESS
+                            @Model.Title
                         </h10>
-                        <p class="proile-rating">Position: <span>Tp. Hồ Chí Minh</span></p>
-                        <p class="proile-rating">Time: <span>17-09-2023 - 17-10-2023</span></p>
-                        <p class="proile-rating">Price: <span>1000$</span></p>
+                        <lable hidden id="UserID">@Model.UserID</lable>
+                        <p class="proile-rating">Position: <span>@Model.Position</span></p>
+                        <p class="proile-rating">Time: <span>@Model.TimeStart.ToString("dd/MM/yyyy") - @Model.TimeEnd.ToString("dd/MM/yyyy")</span></p>
+                        <p class="proile-rating">Price: <span>@Model.Price $</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -35,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-success" id="btnRegister">Apply For Job</button>
+                    <button class="btn btn-success btnApply" data-id=@Model.ID id="btnApply">Apply For Job</button>
                 </div>
             </div>
             <div class="row">
@@ -52,28 +58,7 @@
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            About VNG Digital Business
-
-                            VNG Digital Business, a part of VNG's digital ecosystem, focuses on providing a wide range of B2B products and services using advanced technologies such as blockchain, AI, cloud computing, and security. Our data center is Tier III accredited, ensuring secure operations, data preservation, and scalability. With our expertise and technological capabilities, we aim to be a leading force in driving the nation's digital transformation.
-
-                            VNG Cloud
-
-                            All-in-one cloud computing platform offering infrastructure, storage, security, and data management services. Scalable and flexible solutions cater to diverse business needs, improving efficiency, security, and overall performance.
-
-                            About the role
-
-                            Operations Coordinator to assist with the management of daily logistics and activities. In this position, you will contribute In an administrative capacity by assisting our teams on projects, supporting human resources, organizing company events and arranging employee training sessions.
-                            Operations Coordinator’s responsibilities include helping their organization run smoothly and ensuring that deadlines, plans for events or anything related gets accomplished on time with no issues; summarizing and reporting operational activities to superiors upon request or on a regular schedule.
-                            Operations Coordinator will work in a support role and oversee many administrative tasks as needed.
-
-                            Responsibilities
-
-                            Managing and reporting project/task progress related to operations between departments in the organization
-                            Facilitating cross-channel feedback from another team and employees to management and executive teams
-                            Working with team leaders, managers, and department heads to learn departmental needs and goals
-                            Ensuring that all activities conform to local, federal, industry and company standards
-                            Observing, reviewing and analyzing processes to identify inefficiencies and areas where improvements could be made
-                            Identifying and resolving any problems in the operation process
+                            @Model.Description
                         </div>                      
                     </div>
                 </div>

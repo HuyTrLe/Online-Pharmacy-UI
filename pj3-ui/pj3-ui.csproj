@@ -27,7 +27,6 @@
     <Folder Include="wwwroot\admin\css\.vs\css\v17\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\FileContentIndex\merges\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\v17\" />
-    <Folder Include="wwwroot\assets\images\User\" />
     <Folder Include="wwwroot\assets\js\User\" />
   </ItemGroup>
 

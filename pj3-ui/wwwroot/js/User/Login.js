@@ -26,6 +26,7 @@
                 Swal.fire('Email or Password is incorrect')
             }
 
-        }
+        },
+       
     })
 })

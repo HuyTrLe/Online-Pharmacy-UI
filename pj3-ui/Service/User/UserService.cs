@@ -38,6 +38,18 @@ namespace pj3_ui.Service.Home
             return 0;
         }
 
+        public int DeleteEducation(DeleteEducation DeleteEducation)
+        {
+            var callRespones = CallApi<DeleteEducation, HttpResultObject>.PostAsJsonAsync(DeleteEducation, _appSetting.UrlApi, _appSetting.UserUrl.DeleteEducation);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
         public UserModelResult GetUser(Login user)
         {
             var callRespones = CallApi<Login, HttpResultObject>.PostAsJsonAsync(user, _appSetting.UrlApi, _appSetting.UserUrl.GetUser);
@@ -74,6 +86,18 @@ namespace pj3_ui.Service.Home
                 return result;
             }
             return null;
+        }
+
+        public int UpdateFileName(UploadFile uploadFile)
+        {
+            var callRespones = CallApi<UploadFile, HttpResultObject>.PostAsJsonAsync(uploadFile, _appSetting.UrlApi, _appSetting.UserUrl.UpdateFileName);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
         }
 
         public int UpdateUser(UserModelResult userModelResult)

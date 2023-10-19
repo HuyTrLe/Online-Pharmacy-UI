@@ -11,5 +11,7 @@ namespace pj3_ui.Service.Home
         int InsertUser(UserModel user);
         int CheckPassword(ChangePassword CheckPassword);
         int ChangePassword(ChangePassword ChangePassword);
+        int UpdateFileName(UploadFile uploadFile);
+        int DeleteEducation(DeleteEducation DeleteEducation);
     }
 }
