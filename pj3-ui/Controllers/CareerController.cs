@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NuGet.Packaging;
 using pj3_ui.Models.Career;
 using pj3_ui.Models.User;
 using pj3_ui.Service.Career;
 using pj3_ui.Service.Home;
-using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;

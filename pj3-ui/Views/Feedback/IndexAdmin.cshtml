@@ -1,0 +1,131 @@
+﻿@model IEnumerable<pj3_ui.Models.Feedback.FeedbackModel>
+
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Create Date
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.CompanyName
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.PhoneNumber
+                </td>
+                <th>
+                    @item.Subject.Substring(0, Math.Min(4, item.Subject.Length))...
+                </th>
+                <th>
+                    @item.Comment.Substring(0, Math.Min(5, item.Comment.Length))...
+                </th>
+                <th>
+                    @item.CreateDate
+                </th>
+                <td>
+                    <a class="btn btn-info" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Detail</a>
+                </td>
+                @foreach (var items in Model)
+                {
+                    <div class="modal fade" id="detailModal_@item.ID" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Details</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Include the details you want to display -->
+                                    <dl class="row">
+                                        <dt class ="col-sm-2">ID:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" value="@item.ID" readonly>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Full Name:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" value="@item.FullName" readonly>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Company Name:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" value="@item.CompanyName" readonly>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Phone number:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" value="@item.PhoneNumber" readonly>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Subject:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" value="@item.Subject" readonly>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Comment:</dt>
+                                        <dd class="col-sm-10">
+                                            <textarea class="form-control" cols="50" rows="4" readonly>@item.Comment</textarea>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

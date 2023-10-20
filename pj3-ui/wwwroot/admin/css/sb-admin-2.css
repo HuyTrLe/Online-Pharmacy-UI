@@ -106,6 +106,10 @@ address {
   line-height: inherit;
 }
 
+thick {
+    font-weight: bold;
+}
+
 ol,
 ul,
 dl {
@@ -159,14 +163,14 @@ sup {
 }
 
 a {
-  color:  ;
+  color: white;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #224abe;
-  text-decoration: underline;
+  color: black;
+  text-decoration: none;
 }
 
 a:not([href]):not([class]) {
