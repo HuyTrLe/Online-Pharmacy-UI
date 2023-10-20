@@ -34,5 +34,10 @@
         public string GetCareer { get; set; }
         public string GetCareerByID { get; set; }
         public string InsertCareerJob { get; set; }
+        public string GetCareersByUserID { get; set; }
+        public string GetCareerDetailByUserID { get; set; }
+        public string CheckResume { get; set; }
+
+
     }
 }

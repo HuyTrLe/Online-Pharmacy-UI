@@ -15,9 +15,11 @@
         public int UserID { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
+        public int? StatusJob { get; set; }
     }
     public class CareerGet
     {
         public int ID { get; set; }
+        public int UserID { get; set; }
     }
 }

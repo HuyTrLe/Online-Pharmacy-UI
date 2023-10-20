@@ -54,5 +54,31 @@ namespace pj3_ui.Service.Career
             }
             return null;
         }
+
+        public IEnumerable<CareerModel> GetCareersByUserID(CareerGet CareerGet)
+        {
+            var callRespones = CallApi<CareerGet, HttpResultObject>.PostAsJsonAsync(CareerGet, _appSetting.UrlApi, _appSetting.CareerUrl.GetCareersByUserID);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerModel>>();
+                return result;
+            }
+            return null;
+        }
+
+        public CareerModel GetCareerDetailByUserID(CareerGet CareerGet)
+        {
+            var callRespones = CallApi<CareerGet, HttpResultObject>.PostAsJsonAsync(CareerGet, _appSetting.UrlApi, _appSetting.CareerUrl.GetCareerDetailByUserID);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<CareerModel>();
+                return result;
+            }
+            return null;
+        }
     }
 }

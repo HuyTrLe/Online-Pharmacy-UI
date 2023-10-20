@@ -14,13 +14,13 @@
         success: function (result) {
             if (result != null && result.id > 0) {
                 Swal.fire({
-                    icon: 'sucess!',
+                    icon: 'success',
                     title: 'Login Success!',
-                    showConfirmButton: true
+                    showConfirmButton: false,
+                    timer: 2000
                 }).then((result) => {
                     window.location = "/Home/Index";
-                })
-               
+                })    
             }
             else {
                 Swal.fire('Email or Password is incorrect')

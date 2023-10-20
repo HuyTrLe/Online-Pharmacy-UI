@@ -16,13 +16,13 @@
     public class Login
     {
         public int ID { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
     public class ChangePassword
     {
         public int UserID { get; set; }
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
     }
     public class Upload
     {
@@ -31,10 +31,14 @@
     public class UploadFile
     {
         public int UserID { get; set; }
-        public string Filename { get; set; }
+        public string Filename { get; set; } = string.Empty;
     }
     public class DeleteEducation
     {
        public List<string> listID { get; set; }
+    }
+    public class UserGet
+    {
+        public string UserID { get; set; } = string.Empty;
     }
 }

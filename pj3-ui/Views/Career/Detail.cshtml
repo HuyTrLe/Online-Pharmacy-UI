@@ -17,7 +17,7 @@
 
 
     <div class="container emp-profile">
-        <form method="post">
+    
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
@@ -41,7 +41,14 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-success btnApply" data-id=@Model.ID id="btnApply">Apply For Job</button>
+                    @if (Model.UserID != 0 && Model.StatusJob == 0)
+                    {
+                        <button class="btn btn-success btnApply" data-id=@Model.ID data-author=@ViewBag.UserId id="btnApply" disabled>Applied</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-success btnApply" data-id=@Model.ID data-author=@ViewBag.UserId id="btnApply">Apply For Job</button>
+                    }
                 </div>
             </div>
             <div class="row">
@@ -63,7 +70,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+
     </div>
 </body>
 
@@ -71,4 +78,4 @@
 <link rel="stylesheet" href="~/assets/css/Career/Detail.css">
 <link rel="stylesheet" href="~/assets/css/style-starter.css">
 <!-- JS -->
-<script src="~/js/User/Detail.js"></script>
+<script src="~/js/Career/Detail.js"></script>

@@ -12,4 +12,8 @@
     {
         public int JobID { get; set; }
     }
+    public class CareerUser
+    {
+        public int UserID { get; set; }
+    }
 }
