@@ -27,6 +27,7 @@
     {
         public string Login { get; set; }
         public string GetUser { get; set; }
+        public string GetAllUser { get; set; }
         public string UpdateUser { get; set; }
         public string InsertUser { get; set; }
         public string CheckPassword { get; set; }
@@ -106,5 +107,9 @@
         public string GetCareersByUserID { get; set; }
         public string GetCareerDetailByUserID { get; set; }
         public string CheckResume { get; set; }
+        public string InsertCareer { get; set; }
+        public string UpdateCareer { get; set; }
+        public string UpdateCareerJob { get; set; }
+        public string GetCareerJob { get; set; }
     }
 }

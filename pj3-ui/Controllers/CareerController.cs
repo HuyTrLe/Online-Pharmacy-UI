@@ -46,6 +46,38 @@ namespace pj3_ui.Controllers
          
             return View(result);
         }
+        public IActionResult IndexAdmin()
+        {
+            IEnumerable<CareerModel> result = new List<CareerModel>();
+            result = _careerService.Value.GetCareers();
+            return View(result);
+        }
+
+        public IActionResult DetailAdminUpdate(int ID)
+        {
+            CareerGet careerGet = new CareerGet();
+            careerGet.ID = ID;
+            var result = _careerService.Value.GetCareerByID(careerGet);
+            return View(result);
+        }
+        public IActionResult InsertCareer()
+        {
+            return View();
+        }
+        public int InsertCareerAdmin(CareerModel careerModel)
+        {
+            var result = _careerService.Value.InsertCareer(careerModel);
+            return result;
+        }
+        public int UpdateCareer(CareerModel careerModel)
+        {
+            var result = _careerService.Value.UpdateCareer(careerModel);
+            return result;
+        }
+        public IActionResult IndexAdminCareerJob()
+        {
+            return View();
+        }
         public IActionResult Detail(string data)
         {
             CareerModel result = new CareerModel();

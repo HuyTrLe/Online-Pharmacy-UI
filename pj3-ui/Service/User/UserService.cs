@@ -50,6 +50,19 @@ namespace pj3_ui.Service.Home
             return 0;
         }
 
+        public IEnumerable<UserModelResult> GetAllUser()
+        {
+            var callRespones = CallApi<Login, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.UserUrl.GetAllUser);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<UserModelResult>>();
+                return result;
+            }
+            return null;
+        }
+
         public UserModelResult GetUser(Login user)
         {
             var callRespones = CallApi<Login, HttpResultObject>.PostAsJsonAsync(user, _appSetting.UrlApi, _appSetting.UserUrl.GetUser);

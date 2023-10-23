@@ -11,5 +11,9 @@ namespace pj3_ui.Service.Career
         CareerModel GetCareerByID(CareerGet careerGet);
         CareerModel GetCareerDetailByUserID(CareerGet CareerGet);
         int InsertCareerJob(CareerJobModel careerJobGet);
+        IEnumerable<CareerJobModel> GetCareerJob();
+        int InsertCareer(CareerModel CareerModel);
+        int UpdateCareer(CareerModel CareerModel);
+        int UpdateCareerJob(CareerJobModel CareerJobModel);
     }
 }
