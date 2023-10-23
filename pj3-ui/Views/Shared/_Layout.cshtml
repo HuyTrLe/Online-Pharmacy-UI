@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 @{
     string username = Context.Session.GetString("Username");
+    int? Role = Context.Session.GetInt32("UserRole");
 }
 <html>
 <head>
@@ -59,7 +60,7 @@
                             @Html.ActionLink("Quote Us", "Index", "Feedback", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                         
+                            @Html.ActionLink("Career", "Index", "Career", null, new { @class = "nav-link" })
                         </li>
                         
                        
@@ -97,6 +98,19 @@
                                 @if (!string.IsNullOrEmpty(username))
                                 {
                                     @Html.ActionLink("Welcome, " + @username, "Detail", "User", null, new { @class = "nav-link" })
+                                    if (Role.HasValue && Role == 1)
+                                    {
+                                        <div>
+
+
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Admin", "AdminIndex", "Home", null, new { @class = "nav-link" })
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
 
                                 }
                                 else

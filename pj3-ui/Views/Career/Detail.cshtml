@@ -1,0 +1,81 @@
+﻿@using pj3_ui.Models.Career;
+
+@model CareerModel
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <span>Home</span> » <span class="breadcrumb_last" aria-current="page">Career Detail</span>
+        </div>
+    </nav>
+
+
+    <div class="container emp-profile">
+    
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <a><img src="~/assets/images/pharmacy.png" alt=" " width="70" height="70" /></a>                       
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h10 style="font-weight:20px">
+                            @Model.Title
+                        </h10>
+                        <lable hidden id="UserID">@Model.UserID</lable>
+                        <p class="proile-rating">Position: <span>@Model.Position</span></p>
+                        <p class="proile-rating">Time: <span>@Model.TimeStart.ToString("dd/MM/yyyy") - @Model.TimeEnd.ToString("dd/MM/yyyy")</span></p>
+                        <p class="proile-rating">Price: <span>@Model.Price $</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    @if (Model.UserID != 0 && Model.StatusJob == 0)
+                    {
+                        <button class="btn btn-success btnApply" data-id=@Model.ID data-author=@ViewBag.UserId id="btnApply" disabled>Applied</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-success btnApply" data-id=@Model.ID data-author=@ViewBag.UserId id="btnApply">Apply For Job</button>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">                      
+                        <h5>SKILLS REQUIRED</h5>
+                        <a href="">Web Designer</a><br />
+                        <a href="">Web Developer</a><br />
+                        <a href="">WordPress</a><br />
+                        <a href="">WooCommerce</a><br />
+                        <a href="">PHP, .Net</a><br />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            @Model.Description
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</body>
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/assets/css/Career/Detail.css">
+<link rel="stylesheet" href="~/assets/css/style-starter.css">
+<!-- JS -->
+<script src="~/js/Career/Detail.js"></script>

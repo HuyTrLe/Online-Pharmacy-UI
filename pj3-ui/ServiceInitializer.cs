@@ -1,5 +1,6 @@
 ﻿using pj3_ui.Models;
 using pj3_ui.Service.Category;
+using pj3_ui.Service.Career;
 using pj3_ui.Service.Home;
 using pj3_ui.Service.Product;
 using pj3_ui.Service.ProductImage;
@@ -32,4 +33,7 @@ namespace pj3_ui
             services.AddSingleton<IProductSpecificationService, ProductSpecificationService>();
         }
     }
+            services.AddSingleton<ICareerService, CareerService>();
+        }
+	}
 }
