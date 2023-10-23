@@ -31,8 +31,6 @@ namespace pj3_ui
             services.AddSingleton<ICategoryService, CategoryService>();
             services.AddSingleton<ISpecificationService, SpecificationService>();
             services.AddSingleton<IProductSpecificationService, ProductSpecificationService>();
-        }
-    }
             services.AddSingleton<ICareerService, CareerService>();
         }
 	}

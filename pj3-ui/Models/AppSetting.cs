@@ -98,7 +98,6 @@
 
         public string GetProductSpecificationByID { get; set; }
     }
-	}
     public class CareerUrl
     {
         public string GetCareer { get; set; }
@@ -107,7 +106,5 @@
         public string GetCareersByUserID { get; set; }
         public string GetCareerDetailByUserID { get; set; }
         public string CheckResume { get; set; }
-
-
     }
 }
