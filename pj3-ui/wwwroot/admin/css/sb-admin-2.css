@@ -4766,7 +4766,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color:  ;
+  color:  black;
   background-color: #fff;
   border: 1px solid #dddfeb;
 }
@@ -4798,9 +4798,9 @@ input[type="button"].btn-block {
 
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
-  background-color:  ;
-  border-color:  ;
+  color: blue;
+  background-color:  #fff;
+  border-color:  #ddd;
 }
 
 .page-item.disabled .page-link {
@@ -9807,7 +9807,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper #content {
-  flex: 1 0 auto;
+
 }
 
 .container,

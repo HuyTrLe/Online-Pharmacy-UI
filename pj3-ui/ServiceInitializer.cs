@@ -1,5 +1,9 @@
 ﻿using pj3_ui.Models;
+using pj3_ui.Service.Category;
 using pj3_ui.Service.Home;
+using pj3_ui.Service.Product;
+using pj3_ui.Service.ProductImage;
+using pj3_ui.Service.Specification;
 
 namespace pj3_ui
 {
@@ -21,6 +25,11 @@ namespace pj3_ui
             services.AddSingleton<IHomeService, HomeService>();
             services.AddSingleton<IUserService, UserService>();
 			services.AddSingleton<IFeedbackService, FeedbackService>();
-		}
-	}
+			services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IProductImageService, ProductImageService>();
+            services.AddSingleton<ICategoryService, CategoryService>();
+            services.AddSingleton<ISpecificationService, SpecificationService>();
+            services.AddSingleton<IProductSpecificationService, ProductSpecificationService>();
+        }
+    }
 }

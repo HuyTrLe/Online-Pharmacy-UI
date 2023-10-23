@@ -6,9 +6,19 @@
         public UserUrl UserUrl { get; set; }
         public string UrlApi { get; set; }
 
-		public FeedbackUrl FeedbackUrl { get; set; }
-	}
-	public class ApiUrl
+        public FeedbackUrl FeedbackUrl { get; set; }
+
+        public ProductUrl ProductUrl { get; set; }
+
+        public ProductImageUrl ProductImageUrl { get; set; }
+
+        public CategoryUrl CategoryUrl { get; set; }
+
+        public SpecUrl SpecUrl { get; set; }
+
+        public ProductSpecUrl ProductSpecUrl { get; set; }
+    }
+    public class ApiUrl
     {
         public string GetMovies { get; set; }
     }
@@ -28,5 +38,59 @@
 
         public string GetFeedBackById { get; set; }
 
-	}
+    }
+
+    public class ProductUrl
+    {
+        public string InsertProduct { get; set; }
+        public string GetProductById { get; set; }
+
+        public string UpdateProduct { get; set; }
+
+        public string GetProduct { get; set; }
+
+        public string DeleteProduct { get; set; }
+    }
+
+    public class ProductImageUrl
+    {
+        public string GetProductImage { get; set; }
+
+        public string InsertProductImage { get; set; }
+
+        public string UpdateProductImage { get; set; }
+
+        public string DeleteProductImage { get; set; }
+
+        public string GetProductImageByID { get; set; }
+    }
+
+    public class CategoryUrl
+    {
+        public string GetCategory { get; set; }
+        public string UpdateCategory { get; set; }
+        public string InsertCategory { get; set; }
+
+        public string GetCategoryById { get; set;}
+    }
+
+    public class SpecUrl
+    {
+        public string GetSpecification { get; set; }
+        public string InsertSpecification { get; set; }
+
+        public string UpdateSpecification { get; set; }
+
+        public string GetSpecificationByID { get; set; }
+    }
+
+    public class ProductSpecUrl
+    {
+        public string GetProductSpecification { get; set; }
+        public string InsertProductSpecification { get; set; }
+
+        public string UpdateProductSpecification { get; set; }
+
+        public string GetProductSpecificationByID { get; set; }
+    }
 }
