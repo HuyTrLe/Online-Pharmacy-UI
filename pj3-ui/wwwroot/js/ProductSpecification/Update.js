@@ -1,22 +1,25 @@
 ﻿$(document).ready(function () {
     $(document).on("click", ".btnSubmit", function () {
+        // Get the specId from the data attribute of the clicked button
         var specId = $(this).data("spec-id");
         var modal = $("#detailModal_" + specId);
-        var name = modal.find("#Name_" + specId).val();
-        var unit = modal.find("#Unit_" + specId).val();
-
-        if (unit.trim() === "") {
-            unit = 'none';
-        }
+        var specName = modal.find("#SpecName_" + specId).val();
+        var productID = modal.find("#ProductID_" + specId).val();
+        var specID = modal.find("#SpecID_" + specId).val();
+        var specUnit = modal.find("#SpecUnit_" + specId).val();
+        var specValue = modal.find("#SpecValue_" + specId).val();
 
         var formData = new FormData();
         formData.append("ID", specId);
-        formData.append("Name", name);
-        formData.append("Unit", unit);
+        formData.append("SpecName", specName);
+        formData.append("ProductID", productID);
+        formData.append("SpecID", specID);
+        formData.append("SpecUnit", specUnit);
+        formData.append("SpecValue", specValue);
 
         $.ajax({
             type: "POST",
-            url: "/Specification/Update",
+            url: "/ProductSpecification/Update", // Modify the URL to match your controller action
             data: formData,
             dataType: 'json',
             processData: false,
@@ -29,7 +32,7 @@
                         text: 'Update success!'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = '/Specification/IndexAdmin';
+                            window.location.href = '/ProductSpecification/IndexAdmin';
                         }
                     });
                 } else {
@@ -43,7 +46,6 @@
         });
     });
 
-    // Handle the delete action for the same item
     $(".btnDelete").on("click", function () {
         var specId = $(this).data("spec-id");
 
@@ -65,7 +67,7 @@
     function performDelete(specId) {
         $.ajax({
             type: "POST",
-            url: "/Specification/DeleteSpecification", // Modify the URL to match your controller action
+            url: "/ProductSpecification/Delete", // Modify the URL to match your controller action
             data: { id: specId },
             dataType: 'json',
             success: function (result) {
@@ -76,7 +78,7 @@
                         text: 'Delete success!'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = '/Specification/IndexAdmin';
+                            window.location.href = '/ProductSpecification/IndexAdmin';
                         }
                     });
                 } else {

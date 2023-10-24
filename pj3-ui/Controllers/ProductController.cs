@@ -32,6 +32,7 @@ namespace pj3_ui.Controllers
         {
             // Get a list of feedback items from your service.
             var productItems = _productService.Value.GetProducts();
+
             // Calculate the total number of pages.
             var totalPages = (int)Math.Ceiling((double)productItems.Count() / pageSize);
 

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using pj3_ui.Models.Feedback;
 using pj3_ui.Models;
 using pj3_ui.Models.Product;
+using pj3_ui.Models.Career;
 
 namespace pj3_ui.Service.Specification
 {
@@ -13,6 +14,39 @@ namespace pj3_ui.Service.Specification
         {
             _appSetting = appSetting;
         }
+
+        public SpecificationModel CheckUniqueByName(SpecificationModel spec)
+        {
+            var callRespones = CallApi<SpecificationModel, HttpResultObject>.PostAsJsonAsync(spec, _appSetting.UrlApi, _appSetting.SpecUrl.CheckUniqueByName);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<SpecificationModel>();
+                return result;
+            }
+            return null;
+        }
+
+        public int DeleteSpecification(SpecificationModel spec)
+        {
+            try
+            {
+                var callRespones = CallApi<SpecificationModel, HttpResultObject>.PostAsJsonAsync(spec, _appSetting.UrlApi, _appSetting.SpecUrl.DeleteSpecification);
+                if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+                {
+                    string data = JsonConvert.SerializeObject(callRespones.Item1);
+                    JObject jObject = JObject.Parse(data);
+                    return Convert.ToInt32(jObject["Data"]);
+                }
+
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+            return 0;
+        }
+
         public IEnumerable<SpecificationModel> GetSpecification()
         {
             var callRespones = CallApi<IEnumerable<SpecificationModel>, HttpResultObject>.PostAsJsonAsync(null, _appSetting.UrlApi, _appSetting.SpecUrl.GetSpecification);

@@ -41,40 +41,42 @@
                 </th>
                 <td>
                     <a class="btn btn btn-warning" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Update</a>
+                    <button class="btn btn-danger btnDelete" data-spec-id="@item.ID">Delete</button>
                 </td>
                 <!-- Updated modal structure with unique IDs -->
                 @foreach (var items in Model.SpecsItems)
-                {
-                    <div class="modal fade" id="detailModal_@items.ID" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- ... modal content ... -->
+                {<div class="modal fade" id="detailModal_@item.ID" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
                                 <dl class="row">
                                     <dt class="col-sm-2">ID:</dt>
                                     <dd class="col-sm-10">
-                                        <input class="form-control" id="ID_@items.ID" value="@items.ID" readonly>
+                                        <input class="form-control" id="@item.ID" value="@item.ID" readonly>
                                     </dd>
                                 </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-2">Name:</dt>
-                                    <dd class="col-sm-10">
-                                        <input class="form-control" id="Name_@items.ID" value="@items.Name">
-                                    </dd>
-                                </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-2">Unit:</dt>
-                                    <dd class="col-sm-10">
-                                        @if (item.Unit != "none")
-                                        {
-                                            <input class="form-control" id="Unit_@items.ID" value="@items.Unit">
-                                        }
-                                        else
-                                        {
-                                            <input class="form-control" id="Unit_@items.ID" value="">
-                                        }
-                                    </dd>
-                                </dl>
-                                <!-- ... rest of modal ... -->
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Name:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" id="Name_@item.ID" value="@item.Name">
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Unit:</dt>
+                                        <dd class="col-sm-10">
+                                            @if (item.Unit != "none") {
+                                                <input class="form-control" id="Unit_@item.ID" value="@item.Unit">
+                                            } else
+                                            {
+                                                <input class="form-control" id="Unit_@item.ID" value="">
+                                            }
+                                        </dd>
+                                    </dl>
+                                </div>
                                 <div class="modal-footer d-flex justify-content-center">
                                     <!-- Center the content -->
                                     <button type="submit" class="btn btn-info btnSubmit" data-spec-id="@item.ID">Update</button>

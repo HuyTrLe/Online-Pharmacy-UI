@@ -14,9 +14,22 @@ namespace pj3_ui.Service.Specification
         {
             _appSetting = appSetting;
         }
+
+        public int DeleteProductSpecification(ProductSpecification productSpec)
+        {
+            var callRespones = CallApi<ProductSpecification, HttpResultObject>.PostAsJsonAsync(productSpec, _appSetting.UrlApi, _appSetting.ProductSpecUrl.DeleteProductSpecification);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
         public IEnumerable<ProductSpecification> GetProductSpecification()
         {
-            var callRespones = CallApi<IEnumerable<ProductSpecification>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.ProductSpecUrl.GetProductSpecification);
+            var callRespones = CallApi<IEnumerable<ProductSpecification>, HttpResultObject>.PostAsJsonAsync(null, _appSetting.UrlApi, _appSetting.ProductSpecUrl.GetProductSpecification);
             if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);

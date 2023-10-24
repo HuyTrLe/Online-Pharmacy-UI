@@ -55,6 +55,8 @@
         public string GetProduct { get; set; }
 
         public string DeleteProduct { get; set; }
+
+        public string CheckUniqueByName { get; set; }
     }
 
     public class ProductImageUrl
@@ -87,6 +89,10 @@
         public string UpdateSpecification { get; set; }
 
         public string GetSpecificationByID { get; set; }
+
+        public string DeleteSpecification { get; set; }
+
+        public string CheckUniqueByName { get; set; }
     }
 
     public class ProductSpecUrl
@@ -97,6 +103,8 @@
         public string UpdateProductSpecification { get; set; }
 
         public string GetProductSpecificationByID { get; set; }
+
+        public string DeleteProductSpecification { get; set; }
     }
     public class CareerUrl
     {

@@ -7,6 +7,8 @@ namespace pj3_ui.Service.Specification
         int InsertProductSpecification(ProductSpecification productSpec);
         IEnumerable<ProductSpecification> GetProductSpecification();
         int UpdateProductSpecification(ProductSpecification productSpec);
+
+        int DeleteProductSpecification(ProductSpecification productSpec);
         ProductSpecification GetProductSpecificationByID(int ID);
     }
 }

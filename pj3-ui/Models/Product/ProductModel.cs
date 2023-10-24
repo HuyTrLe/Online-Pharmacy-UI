@@ -15,9 +15,9 @@
         public DateTime UpdatedDate { get; set; }
         public bool Deleted { get; set; }
 
-        public List<IFormFile> ProductImages { get; set; }
+        public List<IFormFile>? ProductImages { get; set; }
 
-        public List<ProductSpecification> ProducSpecs { get; set; }
+        public List<ProductSpecification>? ProducSpecs { get; set; }
     }
 
     public class ProductImageModel
@@ -36,11 +36,11 @@
 
         public int SpecID { get; set; }
 
-        public string SpecName { get; set; }
+        public string SpecName { get; set; } = string.Empty;
 
-        public string SpecValue { get; set; }
+        public string SpecValue { get; set; } = string.Empty;
 
-        public string SpecUnit { get; set; }
+        public string SpecUnit { get; set; } = string.Empty;
     }
 
     public class CategoryGet

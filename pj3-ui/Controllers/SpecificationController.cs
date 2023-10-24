@@ -58,5 +58,22 @@ namespace pj3_ui.Controllers
             var result = _specService.Value.InsertSpecification(spec);
             return result;
         }
+
+        public int DeleteSpecification(SpecificationModel spec)
+        {
+            var result = _specService.Value.DeleteSpecification(spec);
+            return result;
+        }
+
+        public int CheckUniqueByName(SpecificationModel spec)
+        {
+            spec.Name = spec.Name.Replace(" ","");
+            var result = _specService.Value.CheckUniqueByName(spec);
+            if (result != null)
+            {
+                return -1;
+            }
+            return 1;
+        }
     }
 }
