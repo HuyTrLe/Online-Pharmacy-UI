@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using pj3_ui.Models;
-using pj3_ui.Models.Category;
+using pj3_ui.Models.Product;
+using pj3_ui.Models.User;
 
 namespace pj3_ui.Service.Category
 {
@@ -35,9 +36,16 @@ namespace pj3_ui.Service.Category
             throw new NotImplementedException();
         }
 
-        public int UpdateCategory(CategoryModel Category)
+        public int UpdateCategory(CategoryModel category)
         {
-            throw new NotImplementedException();
-        }
+			var callRespones = CallApi<UserModelResult, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CategoryUrl.UpdateCategory);
+			if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+			{
+				string data = JsonConvert.SerializeObject(callRespones.Item1);
+				JObject jObject = JObject.Parse(data);
+				return 1;
+			}
+			return 0;
+		}
     }
 }

@@ -4,7 +4,11 @@
         let modalContent = $(this).closest(".modal-content");
 
         let name = modalContent.find("#name").val();
-        let categoryID = modalContent.find("#ID").val();
+        let description = modalContent.find("#description").val();
+        let selectedCategoryId = modalContent.find("#category").val();
+        let categoryID = modalContent.find("#category0").val();
+        let productID = modalContent.find("#ID").val();
+
         let deleted = modalContent.find("#delete").val();
 
         if (deleted === "Deactive") {
@@ -24,23 +28,26 @@
                     deleted = false;
                     return;
                 }
-                performUpdate(name, categoryID);
+                performUpdate(name, description, selectedCategoryId || categoryID, deleted, productID);
             });
         } else {
             // For other cases (e.g., "Active"), set the "Deleted" value to 0 and proceed with the AJAX request.
-            performUpdate(name, categoryID);
+            performUpdate(name, description, selectedCategoryId || categoryID, deleted, productID);
         }
     });
 });
 
-function performUpdate(name, categoryID) {
+function performUpdate(name, description, selectedCategoryId, deleted, productID) {
     var formData = new FormData();
+    formData.append("CategoryID", selectedCategoryId);
+    formData.append("Deleted", deleted);
     formData.append("ID", productID);
     formData.append("Name", name);
+    formData.append("Description", description);
 
     $.ajax({
         type: "POST",
-        url: "/Category/UpdateAdmin",
+        url: "/Product/UpdateProduct",
         data: formData,
         dataType: 'json',
         processData: false,
@@ -53,7 +60,7 @@ function performUpdate(name, categoryID) {
                     text: 'Update success!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '/Category/IndexAdmin';
+                        window.location.href = '/Product/IndexAdmin';
                     }
                 });
             } else {

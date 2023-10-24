@@ -4,17 +4,22 @@
     {
         public ApiUrl ApiUrl { get; set; }
         public UserUrl UserUrl { get; set; }
+        public CareerUrl CareerUrl { get; set; }
         public string UrlApi { get; set; }
 
-		public FeedbackUrl FeedbackUrl { get; set; }
+        public FeedbackUrl FeedbackUrl { get; set; }
+
+        public ProductUrl ProductUrl { get; set; }
+
+        public ProductImageUrl ProductImageUrl { get; set; }
 
         public CategoryUrl CategoryUrl { get; set; }
 
-        public SpecificationUrl SpecificationUrl { get; set; }
+        public SpecUrl SpecUrl { get; set; }
 
-        public ProductUrl ProductUrl { get; set; }
-	}
-	public class ApiUrl
+        public ProductSpecUrl ProductSpecUrl { get; set; }
+    }
+    public class ApiUrl
     {
         public string GetMovies { get; set; }
     }
@@ -24,6 +29,10 @@
         public string GetUser { get; set; }
         public string UpdateUser { get; set; }
         public string InsertUser { get; set; }
+        public string CheckPassword { get; set; }
+        public string ChangePassword { get; set; }
+        public string UpdateFileName { get; set; }
+        public string DeleteEducation { get; set; }
     }
 
     public class FeedbackUrl
@@ -36,22 +45,68 @@
 
     }
 
+    public class ProductUrl
+    {
+        public string InsertProduct { get; set; }
+        public string GetProductByID { get; set; }
+
+		public string GetProductByCategoryID { get; set; }
+
+		public string UpdateProduct { get; set; }
+
+        public string GetProduct { get; set; }
+
+        public string DeleteProduct { get; set; }
+    }
+
+    public class ProductImageUrl
+    {
+        public string GetProductImage { get; set; }
+
+        public string InsertProductImage { get; set; }
+
+        public string UpdateProductImage { get; set; }
+
+        public string DeleteProductImage { get; set; }
+
+        public string GetProductImageByID { get; set; }
+    }
+
     public class CategoryUrl
     {
         public string GetCategory { get; set; }
-        
+        public string UpdateCategory { get; set; }
+        public string InsertCategory { get; set; }
+
+        public string GetCategoryById { get; set; }
     }
 
-
-        
-    public class SpecificationUrl 
+    public class SpecUrl
     {
-        public string GetSpecification {get;set;}
+        public string GetSpecification { get; set; }
+        public string InsertSpecification { get; set; }
+
+        public string UpdateSpecification { get; set; }
+
+        public string GetSpecificationByID { get; set; }
     }
 
-    public class ProductUrl
+    public class ProductSpecUrl
     {
-        public string GetProduct { get;set;}
-    }
+        public string GetProductSpecification { get; set; }
+        public string InsertProductSpecification { get; set; }
 
+        public string UpdateProductSpecification { get; set; }
+
+        public string GetProductSpecificationByID { get; set; }
+    }
+    public class CareerUrl
+    {
+        public string GetCareer { get; set; }
+        public string GetCareerByID { get; set; }
+        public string InsertCareerJob { get; set; }
+        public string GetCareersByUserID { get; set; }
+        public string GetCareerDetailByUserID { get; set; }
+        public string CheckResume { get; set; }
+    }
 }

@@ -1,4 +1,4 @@
-﻿namespace pj3_ui.Models.Specification
+﻿namespace pj3_ui.Models.Product
 {
     public class SpecificationModel
     {

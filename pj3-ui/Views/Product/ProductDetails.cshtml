@@ -1,4 +1,5 @@
-﻿
+﻿@model pj3_ui.Models.Product.ProductModel
+
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,111 +8,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>
-		Dentile a Medical Category Bootstrap Responsive Website Template | ProductDetails :: W3layouts
-	</title>
-	<!-- Template CSS -->
-	<link rel="stylesheet" href="~/assets/css/style-starter.css">
-	<!-- Template CSS -->
-	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
-	<!-- Template CSS -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Dentile a Medical Category Bootstrap Responsive Website Template | ProductDetails :: W3layouts
+    </title>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
 
-	<link href="~/assets/css/ProductDetails/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> <!--Login fail-->
-	<link href="~/assets/css/ProductDetails/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="~/assets/css/ProductDetails/animate.min.css" rel="stylesheet" type="text/css" media="all" /><!-- animation -->
-	<link href="~/assets/css/ProductDetails/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style -->
-	<link href="~/assets/css/ProductDetails/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/assets/css/ProductDetails/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> <!--Login fail-->
+    <link href="~/assets/css/ProductDetails/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/assets/css/ProductDetails/animate.min.css" rel="stylesheet" type="text/css" media="all" /><!-- animation -->
+    <link href="~/assets/css/ProductDetails/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style -->
+    <link href="~/assets/css/ProductDetails/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
 
-	<link href="~/assets/css/ProductDetails/font-awesome.css" rel="stylesheet">
-	<!-- //font-awesome icons -->
-	<!-- js -->
-	<script src="~/assets/js/ProductDetails/jquery-2.2.3.min.js"></script>
-	<script src="~/assets/js/ProductDetails/owl.carousel.js"></script>
-	<script src="~/assets/js/ProductDetails/bootstrap.js"></script>
-	<!--flex slider-->
-	<script defer src="~/assets/js/ProductDetails/jquery.flexslider.js"></script>
-	<link rel="stylesheet" href="~/assets/css/ProductDetails/flexslider.css" type="text/css" media="screen" />
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function () {
-			$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-			});
-		});
-	</script>
+    <link href="~/assets/css/ProductDetails/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="~/assets/js/ProductDetails/jquery-2.2.3.min.js"></script>
+    <script src="~/assets/js/ProductDetails/owl.carousel.js"></script>
+    <script src="~/assets/js/ProductDetails/bootstrap.js"></script>
+    <!--flex slider-->
+    <script defer src="~/assets/js/ProductDetails/jquery.flexslider.js"></script>
+    <link rel="stylesheet" href="~/assets/css/ProductDetails/flexslider.css" type="text/css" media="screen" />
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+            });
+        });
+    </script>
 
-	<script src="~/assets/js/ProductDetails/imagezoom.js"></script>
-	
-
+    <script src="~/assets/js/ProductDetails/imagezoom.js"></script>
 </head>
 <body>
-<div class="w3l-Shop-block py-5" id="classes">
-	<nav id="breadcrumbs" class="breadcrumbs">
-		<div class="container page-wrapper">
-			<a href="index.html">Home</a> » <span class="breadcrumb_last" aria-current="page">ProductDetalis</span>
-		</div>
-	</nav>
-	
-	
-	<!-- //breadcrumbs -->
-	<!-- products -->
-	<div class="products">	 
-		<div class="container">  
-			<div class="single-page">
-				<div class="single-page-row" id="detail-21">
-					<div class="col-md-6 single-top-left">	
-						<div class="flexslider">
-							<ul class="slides">
-									<li data-thumb="~/assets/images/g1.jpg">
-										<div class="thumb-image detail_images"> <img src="~/assets/images/g1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-								</li>
-									<li data-thumb="">
-										<div class="thumb-image"> <img src="~/assets/images/g2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-								</li>
-									<li data-thumb="">
-										<div class="thumb-image"> <img src="~/assets/images/g3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-								</li> 
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 single-top-right">
-						<h3 class="item_name">Electric Snow Blower</h3>
-						<p>Processing Time: Item will be shipped out within 2-3 working days. </p>
-						
-						<div class="single-price">
-							<ul>
-								<li>$540</li>  
-								<li><del>$600</del></li> 
-								<li><span class="w3off">10% OFF</span></li> 
-								<li>Ends on: June,5th</li>
-								<li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
-							</ul>	
-						</div> 
-						<p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
-						<form action="#" method="post">
-							<input type="hidden" name="cmd" value="_cart" />
-							<input type="hidden" name="add" value="1" /> 
-							<input type="hidden" name="w3ls_item" value="Snow Blower" /> 
-							<input type="hidden" name="amount" value="540.00" /> 
-							
-						</form>
-					</div>
-				   <div class="clearfix"> </div>  
-				</div>
-				
-			</div> 
-			
-			
-			
-		</div>
-	</div>
-	<!--//products-->
-</div>
+    <div class="w3l-Shop-block py-5" id="classes">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="@Url.Action("Index", "Home")">Home</a> » <a href="@Url.Action("ProductList", "Product")">ProductList</a> » <span class="breadcrumb_last" aria-current="page">ProductDetalis</span>
+            </div>
+        </nav>
+
+        <!-- //breadcrumbs -->
+        <!-- products -->
+        <div class="products">
+            <div class="container">
+                <div class="single-page">
+                
+                         
+                                            
+                            <div class="single-page-row" id="detail-21">
+                                <div class="col-md-6 single-top-left">
+                                    <div class="flexslider">
+                                        <ul class="slides">
+                                            <li>
+                                                <img src="~/assets/images/@Model.Thumbnail" data-imagezoom="true" class="img-responsive" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 single-top-right">
+                            <h3 class="item_name">@Model.Name</h3>
+                                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
+
+
+                            <p class="single-price-text">@Model.Description</p>
+                                   
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                       
+                    
+                </div>
+            </div>
+        </div>
+        <!--//products-->
+    </div>
 </body>
-
 </html>
-

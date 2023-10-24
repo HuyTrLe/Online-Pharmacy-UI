@@ -1,4 +1,4 @@
-﻿using pj3_ui.Models.Category;
+﻿using pj3_ui.Models.Product;
 
 namespace pj3_ui.Service.Category
 {
@@ -10,7 +10,7 @@ namespace pj3_ui.Service.Category
         IEnumerable<CategoryModel> GetCategory();
 
 
-        int UpdateCategory(CategoryModel Category);
+        int UpdateCategory(CategoryModel category);
 
         int DeleteCategory(CategoryModel Category);
     }

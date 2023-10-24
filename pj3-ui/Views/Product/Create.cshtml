@@ -1,0 +1,209 @@
+﻿@model pj3_ui.Models.Product.ProductModel
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Create</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Name: </label>
+                    <input id="name" class="form-control" required />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Description: </label>
+                    <textarea cols="50" rows="4" class="form-control" id="description" required></textarea>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Specification</label>
+                    <select asp-items="ViewBag.Specs" class="form-control" id="specs">
+                        <option value="">Select a specification</option>
+                    </select>
+                </div>
+                <button type="button" id="generateLabelButton" class="btn btn-dark">Generate Specification</button>
+                <div id="labelContainer"></div>
+                </br>
+                <div class="form-group">
+                    <label asp-for="CategoryID" class="control-label"></label>
+                    <select asp-items="ViewBag.Categories" class="form-control" id="category">
+                        <option value="">Select a category</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Choose how many product image you want to add:</label>
+                    <select id="image" onchange="handleImageDisplay()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="productImage0">Thumbnail: </label>
+                    <input type="file" id="productImage1" name="productImages" accept="image/*" onchange="displayImage(event, 'previewImage1')" />
+                    <img id="previewImage1" src="#" alt="" style="max-height: 300px; max-width: 400px" />
+                </div>
+
+                <div class="form-group" style="display:none">
+                    <label class="control-label" for="productImage1">Product image 1: </label>
+                    <input type="file" id="productImage2" name="productImages" accept="image/*" onchange="displayImage(event, 'previewImage2')" />
+                    <img id="previewImage2" src="#" alt="" style="max-height: 300px; max-width: 400px" />
+                </div>
+
+                <div class="form-group" style="display:none">
+                    <label class="control-label" for="productImage2"> Product image 2: </label>
+                    <input type="file" id="productImage3" name="productImages" accept="image/*" onchange="displayImage(event, 'previewImage3')" />
+                    <img id="previewImage3" src="#" alt="" style="max-height: 300px; max-width: 400px" />
+                </div>
+                <div class="form-group" style="display:none">
+                    <label class="control-label" for="productImage3"> Product image 3: </label>
+                    <input type="file" id="productImage4" name="productImages" accept="image/*" onchange="displayImage(event, 'previewImage4')" />
+                    <img id="previewImage3" src="#" alt="" style="max-height: 300px; max-width: 400px" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" value="Create" class="btn btn-dark" id="btnSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        function displayImage(event, previewId) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const preview = document.getElementById(previewId);
+                preview.src = reader.result;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function handleImageDisplay() {
+            const selectedValue = parseInt(document.getElementById('image').value);
+
+            for (let i = 1; i <= 4; i++) {
+                const imageElement = document.getElementById(`productImage${i}`);
+                const previewElement = document.getElementById(`previewImage${i}`);
+
+                if (i <= selectedValue) {
+                    imageElement.parentElement.style.display = 'block';
+                } else {
+                    imageElement.parentElement.style.display = 'none';
+                }
+            }
+        }
+        const generatedSpecs = new Set(); // Use a Set to keep track of generated spec IDs
+
+        function generateSpecLabel() {
+            const specsSelect = document.getElementById('specs');
+            const selectedSpecIndex = specsSelect.selectedIndex;
+            const selectedSpec = specsSelect.options[selectedSpecIndex];
+
+            const labelContainer = document.getElementById('labelContainer');
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (selectedSpec.value !== '') {
+                // Check if this spec has already been generated
+                if (generatedSpecs.has(selectedSpec.value)) {
+                    // Remove any existing error message
+                    if (errorMessage) {
+                        labelContainer.removeChild(errorMessage);
+                    }
+
+                    // Create an error message in red text
+                    const newErrorMessage = document.createElement('p');
+                    newErrorMessage.style.color = 'red';
+                    newErrorMessage.id = 'errorMessage';
+                    newErrorMessage.innerHTML = 'Spec has already been generated.';
+                    labelContainer.appendChild(newErrorMessage);
+                } else {
+                    // Remove any existing error message
+                    if (errorMessage) {
+                        labelContainer.removeChild(errorMessage);
+                    }
+
+                    generatedSpecs.add(selectedSpec.value); // Add the spec ID to the set
+                    const specNameAndUnit = selectedSpec.text.split(' (');
+
+                    if (specNameAndUnit.length === 2) {
+                        const specId = selectedSpec.value; // Get the SpecID
+                        const specName = specNameAndUnit[0];
+                        const specUnit = specNameAndUnit[1].slice(0, -1);
+
+                        // Create a div to group the label, input, and delete button
+                        const inputGroup = document.createElement('div');
+                        inputGroup.className = 'input-group spec-label-group'; // Add spec-label-group class
+                        inputGroup.setAttribute('data-spec-id', specId); // Set data-spec-id attribute
+
+                        // Create a label for Spec Name
+                        const nameLabel = document.createElement('label');
+                        nameLabel.innerHTML = `Spec Name: ${specName}`;
+                        nameLabel.className = 'input-group-text';
+                        nameLabel.id = `specName${specId}`;
+                        nameLabel.value = `${specName}`;
+                        inputGroup.appendChild(nameLabel);
+
+                        // Create a label for Spec Unit
+                        const unitLabel = document.createElement('label');
+                        unitLabel.innerHTML = `Spec Unit: ${specUnit}`;
+                        unitLabel.id = `specUnit${specId}`;
+                        unitLabel.value = `${specUnit}`;
+                        unitLabel.className = 'input-group-text';
+                        inputGroup.appendChild(unitLabel);
+
+                        // Create an input field for Spec Value
+                        const valueInput = document.createElement('input');
+                        valueInput.type = 'text';
+                        valueInput.name = `ProducSpecs[${specId}].SpecValue`; // Use the correct index
+                        valueInput.id = `specValue${specId}`;
+                        valueInput.className = 'form-control';
+                        valueInput.placeholder = 'Enter spec value...';
+                        inputGroup.appendChild(valueInput);
+
+                        // Create a delete button (small X)
+                        const deleteButton = document.createElement('button');
+                        deleteButton.type = 'button';
+                        deleteButton.className = 'btn btn-danger';
+                        deleteButton.innerHTML = 'X';
+
+                        // Add an event listener to remove the input group when the delete button is clicked
+                        deleteButton.addEventListener('click', function () {
+                            labelContainer.removeChild(inputGroup);
+                            // Re-enable the selected option in the dropdown
+                            selectedSpec.disabled = false;
+                            selectedSpec.style.color = '';
+                            generatedSpecs.delete(specId); // Remove the spec ID from the set
+                        });
+
+                        inputGroup.appendChild(deleteButton);
+                        labelContainer.appendChild(inputGroup);
+
+                        // Disable the selected option in the dropdown
+                        selectedSpec.disabled = true;
+                        selectedSpec.style.color = 'red';
+                    }
+                }
+            }
+        }
+
+
+
+
+        // Add an event listener to the button
+        document.getElementById('generateLabelButton').addEventListener('click', generateSpecLabel);
+
+    </script>
+
+    <script src="~/js/Product/Index.js"></script>

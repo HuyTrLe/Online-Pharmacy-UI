@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using pj3_ui.Models.Product;
+using pj3_ui.Models.User;
 using pj3_ui.Service.Category;
 
 namespace pj3_ui.Controllers
@@ -16,11 +18,13 @@ namespace pj3_ui.Controllers
             var result = _categoryService.Value.GetCategory();
             return View(result);
         }
-        //public IActionResult ViewProducts(int categoryId)
-        //{
-        //    var products = _categoryService.Value.GetProductsByCategoryId(categoryId); // Sử dụng phương thức để lấy sản phẩm dựa trên categoryId
-        //    return View("Shop", products); // Trả về trang Shop.cshtml với danh sách sản phẩm
-        //}
+        public IActionResult UpdateAdmin(CategoryModel category)
+        {
+            var result = _categoryService.Value.UpdateCategory(category);
+
+            return View(result);
+        }
+
 
     }
 }

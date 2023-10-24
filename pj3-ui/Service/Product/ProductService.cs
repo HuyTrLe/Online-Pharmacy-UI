@@ -26,19 +26,81 @@ namespace pj3_ui.Service.Product
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
                 JObject jObject = JObject.Parse(data);
                 var result = jObject["Data"].ToObject<IEnumerable<ProductModel>>();
+
                 return result;
             }
             return null;
         }
 
+		public ProductModel GetProductByID(int ID)
+		{
+            ProductGet productGet = new ProductGet();
+            productGet.ID = ID;
+			var callRespones = CallApi<ProductGet, HttpResultObject>.PostAsJsonAsync(productGet, _appSetting.UrlApi, _appSetting.ProductUrl.GetProductByID);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<ProductModel>();
+
+                return result;
+            }
+            return null;
+		}
+
+		
+
+		public int InsertProductByID(ProductModel product)
+		{
+			throw new NotImplementedException();
+		}
         public int InsertProduct(ProductModel product)
         {
-            throw new NotImplementedException();
+            var callRespones = CallApi<ProductModel, HttpResultObject>.PostAsJsonAsync(product, _appSetting.UrlApi, _appSetting.ProductUrl.InsertProduct);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
         }
 
         public int UpdateProduct(ProductModel product)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		{
+			var callRespones = CallApi<ProductModel, HttpResultObject>.PostAsJsonAsync(product, _appSetting.UrlApi, _appSetting.ProductUrl.UpdateProduct);
+			if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+			{
+				string data = JsonConvert.SerializeObject(callRespones.Item1);
+				JObject jObject = JObject.Parse(data);
+				return Convert.ToInt32(jObject["Data"]);
+			}
+			return 0;
+		}
+		public IEnumerable<ProductModel> GetProductByCategoryID(int categoryID)
+		{
+			ProductGet productGet = new ProductGet();
+			productGet.CategoryID = categoryID;
+			var callRespones = CallApi<ProductGet, HttpResultObject>.PostAsJsonAsync(productGet, _appSetting.UrlApi, _appSetting.ProductUrl.GetProductByCategoryID);
+			if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+			{
+				string data = JsonConvert.SerializeObject(callRespones.Item1);
+				JObject jObject = JObject.Parse(data);
+				var result = jObject["Data"].ToObject<IEnumerable<ProductModel>>();
+
+				return result;
+			}
+			return null;
+		}
+
+
+
+		public int InsertProductByCategoryID(ProductModel product)
+		{
+			throw new NotImplementedException();
+		}
+
+
+
+	}
 }

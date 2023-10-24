@@ -1,10 +1,8 @@
-﻿@model IEnumerable<pj3_ui.Models.Product.CategoryModel>
-
+﻿@model IEnumerable<pj3_ui.Models.Product.ProductModel>
 @{
-	ViewData["Title"] = "";
-	Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    ViewData["Title"] = "AdminProductList";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,12 +29,18 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    
+                    <p class="mb-4">
+                       Data
+                    </p>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Database for Table Category</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
+                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label>
+                        <label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm" fdprocessedid="03e6ax"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -45,15 +49,26 @@
                                             <th>
                                                 ID
                                             </th>
-                                            
+                                            <th>
+                                                CategoryID
+                                            </th>
                                             <th>
                                                 Name
+                                            </th>
+                                            <th>
+                                                Thumbnail
+                                            </th>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                CreateDate
                                             </th>
                                            
                                             <th>
                                                 Action
                                             </th>
-
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,10 +78,19 @@
                                                 <td>
                                                     @item.ID
                                                 </td>
-                                               
+                                                <td>
+                                                    @item.CategoryID
+                                                </td>
                                                 <td>
                                                     @item.Name
                                                 </td>
+                                                <td>
+                                                    <img src="~/assets/images/@item.Thumbnail" alt="" width="100" height="100">
+                                                </td>
+                                                <td>
+                                                    @item.Description
+                                                </td>
+                                                
                                                 
                                                 <td>
                                                     <a class="btn btn-info" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Detail</a>
@@ -84,10 +108,16 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <!-- Include the details you want to display -->
-                                                                    <dl class="row">
+                                                                    <dl class="row"> 
                                                                         <dt class="col-sm-2">ID:</dt>
                                                                         <dd class="col-sm-10">
                                                                             <input class="form-control" value="@item.ID" readonly>
+                                                                        </dd>
+                                                                    </dl>
+                                                                    <dl class="row">
+                                                                        <dt class="col-sm-2">CategoryID:</dt>
+                                                                        <dd class="col-sm-10">
+                                                                            <input class="form-control" value="@item.CategoryID" readonly>
                                                                         </dd>
                                                                     </dl>
                                                                     <dl class="row">
@@ -96,79 +126,29 @@
                                                                             <input class="form-control" value="@item.Name" readonly>
                                                                         </dd>
                                                                     </dl>
+                                                                    <dl class="row">
+                                                                        <dt class="col-sm-2">Thumbnail:</dt>
+                                                                        <dd class="col-sm-10">
+                                                                            <input class="form-control" value="@item.Thumbnail" readonly>
+                                                                        </dd>
+                                                                    </dl>
+                                                                    <dl class="row">
+                                                                        <dt class="col-sm-2">Description:</dt>
+                                                                        <dd class="col-sm-10">
+                                                                            <input class="form-control" value="@item.Description" readonly>
+                                                                        </dd>
+                                                                    </dl>
 
                                                                 </div>
                                                                 <div class="modal-footer">
-
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
 
-                                                }
-                                                 @foreach (var items in Model)
-                                                {
-                                                    <div class="modal fade" id="editModal_@item.ID" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Edit</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Include the details you want to display -->
-                                                                    
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">Name:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.Name">
-                                                                        </dd>
-                                                                    </dl>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-warning" value="Save" data-dismiss="modal">Save Edit</button>
-                                                                   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-                                                @foreach (var items in Model)
-                                                {
-                                                    <div class="modal fade" id="deleteModal_@item.ID" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Delete</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Include the details you want to display -->
-
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">ID:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.ID" readonly>
-                                                                        </dd>
-                                                                    </dl>
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">Name:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.Name" readonly>
-                                                                        </dd>
-                                                                    </dl>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete </button>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 }
 
                                             </tr>
@@ -177,26 +157,36 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5"></div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="dataTable_previous">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item ">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                        </li>
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="row"><div class="col-sm-12 col-md-5"></div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                <ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                </li>
+                                <li class="paginate_button page-item active">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a>
+                                </li>
+                                <li class="paginate_button page-item next" id="dataTable_next">
+                                    <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                </li>
+                                </ul>
                             </div>
-                        </div>
+                        </div></div>
 
                     </div>
 
@@ -205,6 +195,7 @@
 
             </div>
             <!-- End of Main Content -->
+           
             <!-- End of Footer -->
 
         </div>
@@ -212,6 +203,8 @@
 
     </div>
     <!-- End of Page Wrapper -->
+  
+
     <!-- Bootstrap core JavaScript-->
     <script src="~/admin/vendor/jquery/jquery.min.js"></script>
     <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
