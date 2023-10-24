@@ -1,4 +1,53 @@
-﻿$("#btnSubmit").on("click", function () {
+﻿$(document).ready(function () {
+	$(".category").on("click", function () {
+
+		// Lấy ID của danh mục từ thuộc tính data-category-id
+		var categoryID = $(this).data('categoryid');
+		let param = {
+			categoryID: categoryID
+		}
+		// Gửi yêu cầu AJAX để lấy sản phẩm theo danh mục
+		$.ajax({
+			url: '/Product/ProductCategory',
+			method: 'POST',
+			data: param,
+			success: function (data) {
+				if (data != null) {
+					$('#productlist').html('');
+					data.forEach(function (item){
+						var result = `"<div class="col-lg-4 col-md-6 service_grid_btm_left mt-lg-5 mt-4" >
+
+																<div >
+																	<img src="~/assets/images/${item.Thumbnail} " alt=" " class="img-fluid" width="300" height="300"/>
+																	<div class="service_grid_btm_left2">
+																		<h5>${item.Name}</h5>
+																		<a>Maecenas sodales eu velit in varius. vitae sem vitae urna tempus commodo.</a>
+																		<br></br>
+																		<div class="read">
+																			<a class="btn" href="@Url.Action("ProductDetails", "Product", new {${ ID = item.ID} })">Read More</a>
+																		</div>
+																	</div>
+
+																</div>
+
+															</div>
+											"`;
+						$('#productlist').append(result);
+					})
+				}
+
+				// Cập nhật phần hiển thị sản phẩm với dữ liệu mới
+
+
+			},
+			error: function (xhr, status, error) {
+				console.log(error);
+			}
+		});
+	});
+});
+
+$("#btnSubmit").on("click", function () {
     let name = document.getElementById("name").value;
     let description = document.getElementById("description").value;
     let selectedCategoryId = document.getElementById("category").value;

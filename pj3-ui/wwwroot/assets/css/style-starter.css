@@ -14880,7 +14880,7 @@ p.title-para {
 }
 
 .w3l-main-slider .banner-view {
-  background: url(../images/banner11.jpg) no-repeat center;
+  background: url(../images/a1.jpg) no-repeat center;
   background-size: cover;
   min-height: 600px;
   position: relative;
@@ -14890,17 +14890,17 @@ p.title-para {
 }
 
 .w3l-main-slider .banner-top1 {
-  background: url(../images/banner2.jpg) no-repeat center;
+  background: url(../images/a2.jpg) no-repeat center;
   background-size: cover;
 }
 
 .w3l-main-slider .banner-top2 {
-  background: url(../images/banner3.jpg) no-repeat center;
+  background: url(../images/a3.jpg) no-repeat center;
   background-size: cover;
 }
 
 .w3l-main-slider .banner-top3 {
-  background: url(../images/banner4.jpg) no-repeat center;
+  background: url(../images/a4.jpg) no-repeat center;
   background-size: cover;
 }
 
@@ -15907,7 +15907,7 @@ button.owl-next {
 
 @media screen and (max-width:760px) {
   .w3l-about5 .history-info {
-    background: url(../images/banner4.jpg) no-repeat center;
+    background: url(../images/a4.jpg) no-repeat center;
     background-size: cover;
     min-height: 370px;
     position: relative;
@@ -15923,7 +15923,7 @@ button.owl-next {
     width: 70%;
   }
   .w3l-about5 .history-info {
-    background: url(../images/banner4.jpg) no-repeat center;
+    background: url(../images/a4.jpg) no-repeat center;
       background-size: cover;
       min-height: 400px;
   }
@@ -16984,7 +16984,7 @@ screen and (max-height: 300px) {
 }
 
 .features-4 .features4-block {
-  background: url(../images/banner3.jpg) top;
+  background: url(../images/a3.jpg) top;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
@@ -17097,7 +17097,7 @@ screen and (max-height: 300px) {
 }
 
 .w3l-contact-main .contant11-top-bg {
-  background: url(../images/banner4.jpg) no-repeat center;
+  background: url(../images/a4.jpg) no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 1;

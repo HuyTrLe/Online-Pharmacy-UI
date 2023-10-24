@@ -8,6 +8,10 @@ namespace pj3_ui.Service.Category
 
         IEnumerable<CategoryModel> GetCategory();
 
+
+        int UpdateCategory(CategoryModel category);
+
+        int DeleteCategory(CategoryModel Category);
         CategoryModel GetCategoryById(CategoryGet category);
     }
 }

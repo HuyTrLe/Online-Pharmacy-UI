@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace pj3_ui.Controllers
 {
-    public class HomeController : BaseController
+	public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Lazy<IHomeService> _homeService;
@@ -44,11 +44,6 @@ namespace pj3_ui.Controllers
             return View();
         }
 
-        public ActionResult Shop()
-        {
-
-            return View();
-        }
         public ActionResult Contact()
         {
 
@@ -80,8 +75,9 @@ namespace pj3_ui.Controllers
 
             return View();
         }
+		
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

@@ -50,9 +50,11 @@
     public class ProductUrl
     {
         public string InsertProduct { get; set; }
-        public string GetProductById { get; set; }
+        public string GetProductByID { get; set; }
 
-        public string UpdateProduct { get; set; }
+		public string GetProductByCategoryID { get; set; }
+
+		public string UpdateProduct { get; set; }
 
         public string GetProduct { get; set; }
 
@@ -78,7 +80,7 @@
         public string UpdateCategory { get; set; }
         public string InsertCategory { get; set; }
 
-        public string GetCategoryById { get; set;}
+        public string GetCategoryById { get; set; }
     }
 
     public class SpecUrl
