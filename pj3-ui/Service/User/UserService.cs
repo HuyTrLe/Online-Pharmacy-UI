@@ -113,6 +113,18 @@ namespace pj3_ui.Service.Home
             return 0;
         }
 
+        public int UpdateRole(UserModelUpdateRole UserModelUpdateRole)
+        {
+            var callRespones = CallApi<UserModelUpdateRole, HttpResultObject>.PostAsJsonAsync(UserModelUpdateRole, _appSetting.UrlApi, _appSetting.UserUrl.UpdateRole);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
         public int UpdateUser(UserModelResult userModelResult)
         {
             var callRespones = CallApi<UserModelResult, HttpResultObject>.PostAsJsonAsync(userModelResult, _appSetting.UrlApi, _appSetting.UserUrl.UpdateUser);

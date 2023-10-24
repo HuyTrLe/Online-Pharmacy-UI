@@ -34,6 +34,7 @@
         public string ChangePassword { get; set; }
         public string UpdateFileName { get; set; }
         public string DeleteEducation { get; set; }
+        public string UpdateRole { get; set; }
     }
 
     public class FeedbackUrl

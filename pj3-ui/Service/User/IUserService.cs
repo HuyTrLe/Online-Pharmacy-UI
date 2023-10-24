@@ -9,6 +9,7 @@ namespace pj3_ui.Service.Home
         UserModel Login(Login login);
         UserModelResult GetUser(Login user);
         int UpdateUser(UserModelResult userModelResult);
+        int UpdateRole(UserModelUpdateRole UserModelUpdateRole);
         int InsertUser(UserModel user);
         int CheckPassword(ChangePassword CheckPassword);
         int ChangePassword(ChangePassword ChangePassword);

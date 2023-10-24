@@ -46,9 +46,19 @@
                             @role
                         </th>
                         <td>
-                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "User", new { ID = item.UserModel.ID })">
-                                Update Role
-                            </a>
+                            @if(item.UserModel.RoleID == 1)
+                            {
+                                <a class="btn btn-info" href="@Url.Action("UpdateRole", "User", new { UserID = item.UserModel.ID,RoleID = 2 })">
+                                    Update User
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-info" href="@Url.Action("UpdateRole", "User", new { UserID = item.UserModel.ID ,RoleID = 1})">
+                                    Update Admin
+                                </a>
+                            }
+                           
                         </td>                     
                     </tr>
                 }

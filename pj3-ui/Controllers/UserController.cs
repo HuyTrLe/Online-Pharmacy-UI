@@ -80,6 +80,11 @@ namespace pj3_ui.Controllers
             var userResult = _userService.Value.UpdateUser(userModelResult);
             return userResult;
         }
+        public IActionResult UpdateRole(UserModelUpdateRole userModelResult)
+        {           
+            var userResult = _userService.Value.UpdateRole(userModelResult);
+            return Redirect("IndexAdmin");
+        }
         public int CheckPassword(ChangePassword changePassword)
         {
             changePassword.UserID = HttpContext.Session.GetInt32("UserID").Value;
