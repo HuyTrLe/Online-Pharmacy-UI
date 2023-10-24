@@ -51,11 +51,10 @@
                     @item.CreatedDate
                 </th>
                 <th>
-                    @if (item.UpdatedDate == DateTime.MinValue)
+                    @if(item.UpdatedDate == DateTime.MinValue)
                     {
                         @:null
-                    }
-                    else
+                    } else
                     {
                         @item.UpdatedDate
                     }
@@ -64,8 +63,7 @@
                     @if (item.Deleted == false)
                     {
                         @:Active
-                    }
-                    else
+                    } else
                     {
                         @:Deactive
                     }
@@ -132,8 +130,7 @@
                                             @if (item.UpdatedDate == DateTime.MinValue)
                                             {
                                                 <input class="form-control" value="null" readonly>
-                                            }
-                                            else
+                                            } else
                                             {
                                                 <input class="form-control" value="@item.UpdatedDate" readonly>
                                             }

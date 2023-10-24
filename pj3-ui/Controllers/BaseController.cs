@@ -16,7 +16,7 @@ namespace pj3_ui.Controllers
         {
             HttpContext.Session.SetString("Username", user.UserName);
             HttpContext.Session.SetInt32("UserID", user.ID);
-            HttpContext.Session.SetString("UserRole", user.RoleID.ToString());
+            HttpContext.Session.SetInt32("UserRole", user.RoleID);
         }
 
         public string GetUserLogin()

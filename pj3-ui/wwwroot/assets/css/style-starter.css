@@ -17642,7 +17642,9 @@ button span.fa-angle-up {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
-
+.fullwidth{
+    max-width:100% !important;
+}
 /*-- /move top --*/
 /*# sourceMappingURL=style-freedom.css
 /*--//footer--*/

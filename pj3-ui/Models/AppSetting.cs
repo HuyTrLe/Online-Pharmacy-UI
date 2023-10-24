@@ -27,12 +27,14 @@
     {
         public string Login { get; set; }
         public string GetUser { get; set; }
+        public string GetAllUser { get; set; }
         public string UpdateUser { get; set; }
         public string InsertUser { get; set; }
         public string CheckPassword { get; set; }
         public string ChangePassword { get; set; }
         public string UpdateFileName { get; set; }
         public string DeleteEducation { get; set; }
+        public string UpdateRole { get; set; }
     }
 
     public class FeedbackUrl
@@ -103,10 +105,16 @@
     public class CareerUrl
     {
         public string GetCareer { get; set; }
+        public string GetAllCareer { get; set; }
         public string GetCareerByID { get; set; }
         public string InsertCareerJob { get; set; }
         public string GetCareersByUserID { get; set; }
         public string GetCareerDetailByUserID { get; set; }
         public string CheckResume { get; set; }
+        public string InsertCareer { get; set; }
+        public string UpdateCareer { get; set; }
+        public string UpdateCareerJob { get; set; }
+        public string GetCareerJob { get; set; }
+        public string GetCareerJobAdmin { get; set; }
     }
 }

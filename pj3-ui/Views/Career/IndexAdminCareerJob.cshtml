@@ -1,0 +1,111 @@
+﻿@using pj3_ui.Models.Career;
+@model List<CareerJob>;
+
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<style>
+    .wide-column {
+        width: 200px; 
+    }
+</style>
+<div class="d-flex justify-content-center">
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>ShortDecripton</th>
+                    <th class="wide-column">Time Start</th>
+                    <th class ="wide-column">
+                        Time End</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th colspan="3">FileName</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.CareerModel.ID
+                        </td>
+                        <td>
+                            @item.CareerModel.Title
+                        </td>
+                        <td>
+                            @{
+                                var description = item.CareerModel.ShortDescription.Substring(0, 100) + "...";
+                            }
+                            @description
+                        </td>
+                        <td class="wide-column">
+                            @item.CareerModel.TimeStart.ToString("dd-MM-yyyy")
+                        </td>
+                        <td class="wide-column">
+                            @item.CareerModel.TimeEnd.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            @item.UserModel.UserName
+                        </td>
+                        <td>
+                            @item.UserModel.Email
+                        </td>
+                        <td colspan="3">
+                            @item.UserModel.FileName
+                        </td>
+                      @*   <td>
+                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "Career", new { ID = item.CareerJobID })">
+                                Approve
+                            </a>
+                            <br />
+                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "Career", new { ID = item.CareerJobID })">
+                                Reject
+                            </a>
+                        </td> *@
+                    </tr>
+                }
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+@* <div class="pagination d-flex justify-content-center">
+    @if (Model.TotalPages > 1)
+    {
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@(Model.CurrentPage - 1)">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@i">@i</a>
+                </li>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@(Model.CurrentPage + 1)">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div> *@
+
+
+
+
+
+
+

@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using pj3_ui.Models.Feedback;
 using pj3_ui.Models.Product;
 using pj3_ui.Service.Category;
+using pj3_ui.Service.Home;
 using pj3_ui.Service.Product;
 using pj3_ui.Service.ProductImage;
+using Microsoft.AspNetCore.Http;
+using pj3_ui.Service.Category;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using pj3_ui.Service.Specification;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Drawing.Printing;
 
 namespace pj3_ui.Controllers
 {
@@ -183,6 +190,6 @@ namespace pj3_ui.Controllers
 		}
 
 
-	}
+    }
 }
  

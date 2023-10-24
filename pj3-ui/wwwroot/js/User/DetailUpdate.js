@@ -1,7 +1,45 @@
-﻿$(document).ready(function () {
+﻿var listDelete = [];
+var listIndex = [];
+$(document).ready(function () {
+    
+    document.getElementById("chooseFileButton").addEventListener("click", function () {
+        document.getElementById("fileInput").click();
+    });
 
+    document.getElementById("fileInput").addEventListener("change", function () {
+        const pdfViewer = document.getElementById("pdfViewer");
+        const fileInput = document.getElementById("fileInput");
+
+        if (fileInput.files && fileInput.files[0]) {
+            const pdfFile = fileInput.files[0];
+            const fileURL = URL.createObjectURL(pdfFile);
+
+            pdfViewer.src = fileURL;
+        }
+
+    });
+
+    function SaveUploadFile() {
+        const fileInput = document.getElementById("fileInput");
+        var pdfFile = fileInput.files[0];
+        var pdf = new FormData();
+        pdf.append("PdfFile", pdfFile);
+        $.ajax({
+            type: "POST",
+            url: "/User/UploadFile",
+            data: pdf,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function () {
+               
+            }
+        })
+
+    }
+   
     $("#btnAddEducation").on("click", function () {
-        let index = GetIndexHighest();
+        let index = GetIndexHighestInsert();
         var newIndex = index; // Lấy số lượng phần tử đã có trong "Edu."
         newIndex++;
         var newEducationHTML = `
@@ -22,10 +60,10 @@
         //Education
         let index = GetIndexHighest();
         var ListEducation = [];
-       
-        for (var i = 0; i <= index; i++) {
+
+        for (var i = 0; i < listIndex.length; i++) {
             let valuesEdu = {};
-            var schoolElement = document.querySelector(".school_" + i);
+            var schoolElement = document.querySelector(".school_" + listIndex[i]);
             valuesEdu.ID = schoolElement.querySelector("input#ID").value;
             valuesEdu.SchoolName = schoolElement.querySelector("input#SchoolName").value;
             valuesEdu.SchoolType = schoolElement.querySelector("input#SchoolType").value;
@@ -56,6 +94,8 @@
                     dataType: 'json',
                     success: function (result) {
                         if (result > 0) {
+                            SaveUploadFile();
+                            DeleteEducation();
                             Swal.fire({
                                 icon: 'sucess!',
                                 title: 'Update Success!',
@@ -93,8 +133,25 @@
         
     });
 });
+$(".btnDelete").on("click", function () {
+    var ID = $(this).data("id");
+    var index = $(this).data("index");
+    $(".school_" + index).remove();
+    listDelete.push(ID);
+})
+function DeleteEducation() {
+    if (listDelete.length > 0) {           
+        $.ajax({
+            type: "POST",
+            url: "/User/DeleteEducation",
+            data: { id: listDelete },
+            dataType: 'json'
+        })
+    }
+
+}
 function validateEducation(ListEducation, index) {
-    for (var i = 0; i <= index; i++) {
+    for (var i = 0; i < index; i++) {
         if (ListEducation[i].SchoolName == "" || ListEducation[i].SchoolType == "" || ListEducation[i].Degree == "" || ListEducation[i].From == "" || ListEducation[i].To == "")
             return false;
         if (ListEducation[i].SchoolName == undefined || ListEducation[i].SchoolType == undefined || ListEducation[i].Degree == undefined || ListEducation[i].From == undefined || ListEducation[i].To == undefined)
@@ -113,6 +170,22 @@ function validateUser(UserName, Email, PhoneNumber, Address) {
 
 }
 function GetIndexHighest() {
+
+    var highestIndex = 0;
+    $("[class^='borderDetail row mt-3 school_']").each(function () {
+        var classList = this.className.split(" ");
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i].startsWith("school_")) {
+                // Lấy chỉ số từ class và so sánh với chỉ số cao nhất.
+                var index = parseInt(classList[i].substring(7));
+                listIndex.push(index);
+                highestIndex++;
+            }
+        }
+    });
+    return highestIndex;
+}
+function GetIndexHighestInsert() {
 
     var highestIndex = -1;
     $("[class^='borderDetail row mt-3 school_']").each(function () {

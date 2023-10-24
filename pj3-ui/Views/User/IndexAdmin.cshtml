@@ -1,0 +1,102 @@
+﻿@using pj3_ui.Models.User;
+@model List<UserModelResult>;
+
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<div class="d-flex justify-content-center">
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Create Date</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.UserModel.ID
+                        </td>
+                        <td>
+                            @item.UserModel.UserName
+                        </td>
+                        <td>
+                            @item.UserModel.Email
+                        </td>
+                        <td>
+                            @item.UserModel.PhoneNumber
+                        </td>                     
+                        <th>
+                            @item.UserModel.CreateDate
+                        </th>
+                        <th>
+                            @{
+                                var role = item.UserModel.RoleID == 1 ? "Admin" : "User";
+                            }    
+                            @role
+                        </th>
+                        <td>
+                            @if(item.UserModel.RoleID == 1)
+                            {
+                                <a class="btn btn-info" href="@Url.Action("UpdateRole", "User", new { UserID = item.UserModel.ID,RoleID = 2 })">
+                                    Update User
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-info" href="@Url.Action("UpdateRole", "User", new { UserID = item.UserModel.ID ,RoleID = 1})">
+                                    Update Admin
+                                </a>
+                            }
+                           
+                        </td>                     
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@* <div class="pagination d-flex justify-content-center">
+    @if (Model.TotalPages > 1)
+    {
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@(Model.CurrentPage - 1)">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@i">@i</a>
+                </li>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Feedback/IndexAdmin?page=@(Model.CurrentPage + 1)">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div> *@
+
+
+
+
+
+
+

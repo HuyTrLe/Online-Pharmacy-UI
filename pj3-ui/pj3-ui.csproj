@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Service\Category - Copy\**" />
+    <Content Remove="Service\Category - Copy\**" />
+    <EmbeddedResource Remove="Service\Category - Copy\**" />
+    <None Remove="Service\Category - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Home\_Layout.cshtml" />
   </ItemGroup>
 
@@ -25,8 +32,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\admin\css\.vs\css\FileContentIndex\merges\" />
     <Folder Include="wwwroot\admin\css\.vs\css\v17\" />
+    <Folder Include="wwwroot\admin\img\products\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\FileContentIndex\merges\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\v17\" />
+    <Folder Include="wwwroot\assets\images\Products\" />
     <Folder Include="wwwroot\assets\js\User\" />
   </ItemGroup>
 
