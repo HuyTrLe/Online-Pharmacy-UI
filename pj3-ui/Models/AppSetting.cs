@@ -102,6 +102,7 @@
     public class CareerUrl
     {
         public string GetCareer { get; set; }
+        public string GetAllCareer { get; set; }
         public string GetCareerByID { get; set; }
         public string InsertCareerJob { get; set; }
         public string GetCareersByUserID { get; set; }
@@ -111,5 +112,6 @@
         public string UpdateCareer { get; set; }
         public string UpdateCareerJob { get; set; }
         public string GetCareerJob { get; set; }
+        public string GetCareerJobAdmin { get; set; }
     }
 }

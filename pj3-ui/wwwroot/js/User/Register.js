@@ -35,6 +35,9 @@
                         })
 
                     }
+                    else if (result == -1) {
+                        Swal.fire('Register fail, This email address is already used !')
+                    }
                     else {
                         Swal.fire('Register fail, contact admin to fix!')
                     }

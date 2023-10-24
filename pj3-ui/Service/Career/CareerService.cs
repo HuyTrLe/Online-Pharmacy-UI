@@ -132,5 +132,31 @@ namespace pj3_ui.Service.Career
             }
             return 0;
         }
+
+        public IEnumerable<CareerModel> GetAllCareers()
+        {
+            var callRespones = CallApi<IEnumerable<CareerModel>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CareerUrl.GetAllCareer);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerModel>>();
+                return result;
+            }
+            return null;
+        }
+
+        public IEnumerable<CareerJob> GetCareerJobAdmin()
+        {
+            var callRespones = CallApi<IEnumerable<CareerModel>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CareerUrl.GetCareerJobAdmin);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerJob>>();
+                return result;
+            }
+            return null;
+        }
     }
 }

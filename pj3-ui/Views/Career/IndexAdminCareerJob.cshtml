@@ -1,10 +1,15 @@
 ﻿@using pj3_ui.Models.Career;
-@model List<CareerModel>;
+@model List<CareerJob>;
 
 @{
     ViewData["Title"] = "Feedback";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
+<style>
+    .wide-column {
+        width: 200px; 
+    }
+</style>
 <div class="d-flex justify-content-center">
     <div class="table-responsive">
 
@@ -14,85 +19,58 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>ShortDecripton</th>
-                    <th>Time Start</th>
-                    <th>Time End</th>
-                    <th>Status</th>
-                    <th colspan="4">Action</th>
+                    <th class="wide-column">Time Start</th>
+                    <th class ="wide-column">
+                        Time End</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th colspan="3">FileName</th>
                 </tr>
             </thead>
             <tbody>
+              
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>
-                            @item.ID
+                            @item.CareerModel.ID
                         </td>
                         <td>
-                            @item.Title
+                            @item.CareerModel.Title
                         </td>
                         <td>
-                            @item.ShortDescription
+                            @{
+                                var description = item.CareerModel.ShortDescription.Substring(0, 100) + "...";
+                            }
+                            @description
+                        </td>
+                        <td class="wide-column">
+                            @item.CareerModel.TimeStart.ToString("dd-MM-yyyy")
+                        </td>
+                        <td class="wide-column">
+                            @item.CareerModel.TimeEnd.ToString("dd-MM-yyyy")
                         </td>
                         <td>
-                            @item.TimeStart
-                        </td>                     
-                        <td>
-                            @item.TimeEnd
+                            @item.UserModel.UserName
                         </td>
                         <td>
-                            @item.Status
+                            @item.UserModel.Email
                         </td>
-                        <td>
-                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "Career", new { ID = item.ID })">
-                                Update
+                        <td colspan="3">
+                            @item.UserModel.FileName
+                        </td>
+                      @*   <td>
+                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "Career", new { ID = item.CareerJobID })">
+                                Approve
                             </a>
-                        </td>
-                        <td>
-                            <a class="btn btn-info" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Detail</a>
-                        </td>
-                   
-                            <div class="modal fade" id="detailModal_@item.ID" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- Include the details you want to display -->
-                                            <dl class="row">
-                                                <dt class="col-sm-2">Position:</dt>
-                                                <dd class="col-sm-10">
-                                                    <input class="form-control" value="@item.Position" readonly>
-                                                </dd>
-                                            </dl>
-                                            <dl class="row">
-                                                <dt class="col-sm-2">Price:</dt>
-                                                <dd class="col-sm-10">
-                                                    <input class="form-control" value="@item.Price" readonly>
-                                                </dd>
-                                            </dl>
-                                            <dl class="row">
-                                                <dt class="col-sm-2">Skill:</dt>
-                                                <dd class="col-sm-10">
-                                                    <input class="form-control" value="@item.Skill" readonly>
-                                                </dd>
-                                            </dl>
-                                        <dl class="row">
-                                            <dt class="col-sm-2">Description:</dt>
-                                            <dd class="col-sm-10">
-                                                <input class="form-control" value="@item.Description" readonly>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <br />
+                            <a class="btn btn-info" href="@Url.Action("DetailAdminUpdate", "Career", new { ID = item.CareerJobID })">
+                                Reject
+                            </a>
+                        </td> *@
                     </tr>
                 }
+               
             </tbody>
         </table>
     </div>

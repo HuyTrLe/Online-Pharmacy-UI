@@ -1,4 +1,6 @@
-﻿namespace pj3_ui.Models.Career
+﻿using pj3_ui.Models.User;
+
+namespace pj3_ui.Models.Career
 {
     public class CareerModel
     {
@@ -21,5 +23,17 @@
     {
         public int ID { get; set; }
         public int UserID { get; set; }
+    }
+    public class CareerJob
+    {
+        public int CareerJobID { get; set; }
+        public CareerModel CareerModel { get; set; }
+        public UserModel UserModel { get; set; }
+    }
+    public class UpdateStatusCareer
+    {
+        public int CareerJobID { get; set; }
+        public int Status { get; set; }
+      
     }
 }

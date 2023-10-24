@@ -25,7 +25,15 @@ $("#btnUpdate").on("click", function () {
             dataType: 'json',
             success: function (result) {
                 if (result > 0) {
-                    window.location = "/Career/IndexAdmin";
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Update Success!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then((result) => {
+                        window.location = "/Career/IndexAdmin";
+                    })    
+                    
                 }
                 else {
                     Swal.fire("Update fail");

@@ -7,6 +7,7 @@ namespace pj3_ui.Service.Career
     public interface ICareerService
     {
         IEnumerable<CareerModel> GetCareers();
+        IEnumerable<CareerModel> GetAllCareers();
         IEnumerable<CareerModel> GetCareersByUserID(CareerGet CareerGet);
         CareerModel GetCareerByID(CareerGet careerGet);
         CareerModel GetCareerDetailByUserID(CareerGet CareerGet);
@@ -15,5 +16,6 @@ namespace pj3_ui.Service.Career
         int InsertCareer(CareerModel CareerModel);
         int UpdateCareer(CareerModel CareerModel);
         int UpdateCareerJob(CareerJobModel CareerJobModel);
+        IEnumerable<CareerJob> GetCareerJobAdmin();
     }
 }

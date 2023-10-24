@@ -94,6 +94,11 @@ namespace pj3_ui.Controllers
         }
         public int InsertUser(UserModel user)
         {
+            var getAllUser = _userService.Value.GetAllUser();
+            if(getAllUser.Any(X => X.UserModel.Email == user.Email))
+            {
+                return -1;
+            }
             var userResult = _userService.Value.InsertUser(user);
             return userResult;
         }

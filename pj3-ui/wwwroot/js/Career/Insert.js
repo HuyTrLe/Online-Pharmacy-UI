@@ -1,7 +1,6 @@
 ﻿
 $("#btnInsert").on("click", function () {
     let dataCareer = {};
-    dataCareer.ID = document.getElementById("ID").value;
     dataCareer.Title = document.getElementById("Title").value;
     dataCareer.Position = document.getElementById("Position").value;
     dataCareer.TimeStart = document.getElementById("TimeStart").value;
@@ -14,7 +13,12 @@ $("#btnInsert").on("click", function () {
         Swal.fire("Please fill all field");
         return;
     }
-    else {
+    else if (dataCareer.ShortDescription.length > 500) {
+        Swal.fire("Short Description is too long");
+        return;
+    }
+    else
+    {
         let param = {
             careerModel: dataCareer
         }
