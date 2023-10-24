@@ -21,6 +21,11 @@ namespace pj3_ui.Controllers
 
             return View();
         }
+        public IActionResult IndexAdmin()
+        {
+            var result = _userService.Value.GetAllUser();
+            return View(result);
+        }
 
         public IActionResult Register()
         {
@@ -58,7 +63,12 @@ namespace pj3_ui.Controllers
             var userResult = _userService.Value.GetUser(user);
             return View(userResult);
         }
-
+        public IActionResult DetailAdminUpdate(int ID)
+        {
+            Login user = new Login() { ID = ID, Email = string.Empty, Password = string.Empty };
+            var userResult = _userService.Value.GetUser(user);
+            return View(userResult);
+        }
         public int UpdateUser(UserModelResult userModelResult)
         {
             foreach (var item in userModelResult.Education)
@@ -69,6 +79,11 @@ namespace pj3_ui.Controllers
 
             var userResult = _userService.Value.UpdateUser(userModelResult);
             return userResult;
+        }
+        public IActionResult UpdateRole(UserModelUpdateRole userModelResult)
+        {           
+            var userResult = _userService.Value.UpdateRole(userModelResult);
+            return Redirect("IndexAdmin");
         }
         public int CheckPassword(ChangePassword changePassword)
         {
@@ -84,6 +99,11 @@ namespace pj3_ui.Controllers
         }
         public int InsertUser(UserModel user)
         {
+            var getAllUser = _userService.Value.GetAllUser();
+            if(getAllUser.Any(X => X.UserModel.Email == user.Email))
+            {
+                return -1;
+            }
             var userResult = _userService.Value.InsertUser(user);
             return userResult;
         }

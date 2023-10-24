@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Insert Career</h4>
+                    <p style="color:red">All field is required</p>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Title</label><input type="text" class="form-control" placeholder="Enter Title" id="Title" value=""></div>
+                    <div class="col-md-6"><label class="labels">Position</label><input type="text" class="form-control" placeholder="Enter Position" id="Position" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Time Start</label><input type="date" class="form-control"  id="TimeStart" value=""></div>
+                    <div class="col-md-6"><label class="labels">Time End</label><input type="date" class="form-control" id="TimeEnd" value=""></div>
+                   
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Price</label><input type="number" class="form-control" placeholder="Enter Price" id="Price" value=""></div>
+                    <div class="col-md-6"><label class="labels">Status</label><input type="text" class="form-control" placeholder="Enter Status" id="Status" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Skill</label><input type="text" class="form-control" placeholder="Enter Skill" id="Skill" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">ShortDescription</label><textarea rows="4" cols="150" class="form-control" placeholder="Enter ShortDescription" id="ShortDescription"></textarea></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Description</label><textarea rows="7" cols="250" class="form-control" placeholder="Enter Description" id="Description"></textarea> </div>
+                </div>
+                <div class="row mt-3">
+                    <button class="btn btn-primary" id="btnInsert">Insert</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
+
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/assets/css/User/Register.css">
+<link rel="stylesheet" href="~/assets/css/style-starter.css">
+<!-- JS -->
+<script src="~/js/Career/Insert.js"></script>

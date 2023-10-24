@@ -3,6 +3,7 @@
     let param = {
         ID: ID
     }
+    debugger
     $.ajax({
         type: "POST",
         url: "/Career/GetDetailInfor",
@@ -31,6 +32,8 @@ $(".btnApply").on("click", function () {
         }).then(async (result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
+                $("#loading").show();
+                topFunction();
                 if (await CheckResume()) {
                     let jobID = $(this).data("id");
                     let carrer = {};
@@ -44,6 +47,7 @@ $(".btnApply").on("click", function () {
                         data: param,
                         dataType: 'json',
                         success: function (data) {
+                            $("#loading").hide();
                             if (data.success) {
                                 Swal.fire({
                                     icon: 'success',
@@ -62,6 +66,8 @@ $(".btnApply").on("click", function () {
                     })
                 }
                 else {
+                    document.getElementById("overlay").style.display = "none";
+                    $("#loading").hide();
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
@@ -70,6 +76,7 @@ $(".btnApply").on("click", function () {
                 }
                 
             } else if (result.isDenied) {
+                $("#loading").hide();
                 window.location = "/User/Detail";
             }
         })
@@ -109,4 +116,8 @@ function CheckResume() {
             }
         });
     });
+}
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }

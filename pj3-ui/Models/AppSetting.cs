@@ -27,12 +27,14 @@
     {
         public string Login { get; set; }
         public string GetUser { get; set; }
+        public string GetAllUser { get; set; }
         public string UpdateUser { get; set; }
         public string InsertUser { get; set; }
         public string CheckPassword { get; set; }
         public string ChangePassword { get; set; }
         public string UpdateFileName { get; set; }
         public string DeleteEducation { get; set; }
+        public string UpdateRole { get; set; }
     }
 
     public class FeedbackUrl
@@ -48,9 +50,11 @@
     public class ProductUrl
     {
         public string InsertProduct { get; set; }
-        public string GetProductById { get; set; }
+        public string GetProductByID { get; set; }
 
-        public string UpdateProduct { get; set; }
+		public string GetProductByCategoryID { get; set; }
+
+		public string UpdateProduct { get; set; }
 
         public string GetProduct { get; set; }
 
@@ -78,7 +82,7 @@
         public string UpdateCategory { get; set; }
         public string InsertCategory { get; set; }
 
-        public string GetCategoryById { get; set;}
+        public string GetCategoryById { get; set; }
     }
 
     public class SpecUrl
@@ -109,10 +113,16 @@
     public class CareerUrl
     {
         public string GetCareer { get; set; }
+        public string GetAllCareer { get; set; }
         public string GetCareerByID { get; set; }
         public string InsertCareerJob { get; set; }
         public string GetCareersByUserID { get; set; }
         public string GetCareerDetailByUserID { get; set; }
         public string CheckResume { get; set; }
+        public string InsertCareer { get; set; }
+        public string UpdateCareer { get; set; }
+        public string UpdateCareerJob { get; set; }
+        public string GetCareerJob { get; set; }
+        public string GetCareerJobAdmin { get; set; }
     }
 }

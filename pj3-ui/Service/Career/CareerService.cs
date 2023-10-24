@@ -80,5 +80,83 @@ namespace pj3_ui.Service.Career
             }
             return null;
         }
+
+        public IEnumerable<CareerJobModel> GetCareerJob()
+        {
+            var callRespones = CallApi<CareerGet, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CareerUrl.GetCareerJob);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerJobModel>>();
+                return result;
+            }
+            return null;
+        }
+
+        public int InsertCareer(CareerModel CareerModel)
+        {
+            var callRespones = CallApi<CareerModel, HttpResultObject>.PostAsJsonAsync(CareerModel, _appSetting.UrlApi, _appSetting.CareerUrl.InsertCareer);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result =Convert.ToInt32(jObject["Data"]);
+                return result;
+            }
+            return 0;
+        }
+
+        public int UpdateCareer(CareerModel CareerModel)
+        {
+            var callRespones = CallApi<CareerModel, HttpResultObject>.PostAsJsonAsync(CareerModel, _appSetting.UrlApi, _appSetting.CareerUrl.UpdateCareer);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = Convert.ToInt32(jObject["Data"]);
+                return result;
+            }
+            return 0;
+        }
+
+        public int UpdateCareerJob(CareerJobModel CareerJobModel)
+        {
+            var callRespones = CallApi<CareerJobModel, HttpResultObject>.PostAsJsonAsync(CareerJobModel, _appSetting.UrlApi, _appSetting.CareerUrl.UpdateCareerJob);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = Convert.ToInt32(jObject["Data"]);
+                return result;
+            }
+            return 0;
+        }
+
+        public IEnumerable<CareerModel> GetAllCareers()
+        {
+            var callRespones = CallApi<IEnumerable<CareerModel>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CareerUrl.GetAllCareer);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerModel>>();
+                return result;
+            }
+            return null;
+        }
+
+        public IEnumerable<CareerJob> GetCareerJobAdmin()
+        {
+            var callRespones = CallApi<IEnumerable<CareerModel>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CareerUrl.GetCareerJobAdmin);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<CareerJob>>();
+                return result;
+            }
+            return null;
+        }
     }
 }

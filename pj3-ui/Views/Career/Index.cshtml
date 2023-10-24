@@ -7,15 +7,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
-
+    
     <nav id="breadcrumbs" class="breadcrumbs">
         <div class="container page-wrapper">
             <span>Home</span> » <span class="breadcrumb_last" aria-current="page">Career</span>          
         </div>
     </nav>   
+    <div id="overlay">
     <div class="container">
+        <div id="loading" style="display:none">
+            <img src="~/assets/images/loading.gif" alt="Loading..." />
+
+        </div>    
         @{
-            foreach(var item in Model)
+            foreach (var item in Model)
             {
                 <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
                     <div class="card-body ">
@@ -47,17 +52,17 @@
                                 <span class="vl ml-3"></span>
 
                                 <small>Price: @item.Price $</small>
-
+                                
 
                                 <div>
-                                    @if(item.UserID != 0 && item.StatusJob == 0)
+                                    @if (item.UserID != 0 && item.StatusJob == 0)
                                     {
                                         <button class="btn btn-success btnApply" data-id=@item.ID data-author=@ViewBag.UserId id="btnApply" disabled>Applied</button>
                                     }
                                     else
                                     {
                                         <button class="btn btn-success btnApply" data-id=@item.ID data-author=@ViewBag.UserId id="btnApply">Apply For Job</button>
-                                    }  
+                                    }
                                     <button class="btn btn-success btnDetail" id="btnDetail" data-id="@item.ID">More Information</button>
                                 </div>
 
@@ -65,10 +70,10 @@
                         </div>
                     </div>
                 </div>
-                
+
             }
         }
-        
+    </div>
     </div>
 </body>
 

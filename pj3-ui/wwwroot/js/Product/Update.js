@@ -8,6 +8,7 @@
         let selectedCategoryId = modalContent.find("#category").val();
         let categoryID = modalContent.find("#category0").val();
         let productID = modalContent.find("#ID").val();
+
         let deleted = modalContent.find("#delete").val();
 
         if (deleted === "Deactive") {

@@ -1,6 +1,5 @@
 
 using pj3_ui;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

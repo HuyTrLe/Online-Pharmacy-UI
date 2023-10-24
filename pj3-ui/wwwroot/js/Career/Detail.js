@@ -22,7 +22,7 @@
 
 $(".btnApply").on("click", function () {
     let author = $(this).data("author");
-    if (author != 0) {
+    if (author != 0 && typeof author === "number") {
         Swal.fire({
             title: 'Do you want to apply for this job with current resume?',
             showDenyButton: true,
@@ -38,6 +38,7 @@ $(".btnApply").on("click", function () {
                 let param = {
                     careerGet: carrer
                 }
+                window.scrollTo(0, 0);
                 $.ajax({
                     type: "POST",
                     url: "/Career/InsertCareerJob",

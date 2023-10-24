@@ -19,7 +19,7 @@ namespace pj3_ui.Controllers
         public CareerController(ICareerService careerService, IUserService userService)
         {
             _careerService = new Lazy<ICareerService>(() => careerService);
-            _userService = new Lazy<IUserService> (() => userService);
+            _userService = new Lazy<IUserService>(() => userService);
         }
         public IActionResult Index()
         {
@@ -32,7 +32,7 @@ namespace pj3_ui.Controllers
                 };
                 result = _careerService.Value.GetCareersByUserID(careerGet);
                 ViewBag.UserId = HttpContext.Session.GetInt32("UserID").Value;
-                foreach(var item in result)
+                foreach (var item in result)
                 {
                     item.UserID = HttpContext.Session.GetInt32("UserID").Value;
                 }
@@ -42,15 +42,47 @@ namespace pj3_ui.Controllers
                 ViewBag.UserId = 0;
                 result = _careerService.Value.GetCareers();
             }
-            
-         
+
+
+            return View(result);
+        }
+        public IActionResult IndexAdmin()
+        {
+            var result = _careerService.Value.GetAllCareers();
+            return View(result);
+        }
+
+        public IActionResult DetailAdminUpdate(int ID)
+        {
+            CareerGet careerGet = new CareerGet();
+            careerGet.ID = ID;
+            var result = _careerService.Value.GetCareerByID(careerGet);
+            return View(result);
+        }
+        public IActionResult InsertCareer()
+        {
+            return View();
+        }
+        public int InsertCareerAdmin(CareerModel careerModel)
+        {
+            var result = _careerService.Value.InsertCareer(careerModel);
+            return result;
+        }
+        public int UpdateCareer(CareerModel careerModel)
+        {
+            var result = _careerService.Value.UpdateCareer(careerModel);
+            return result;
+        }
+        public IActionResult IndexAdminCareerJob()
+        {
+            var result = _careerService.Value.GetCareerJobAdmin();
             return View(result);
         }
         public IActionResult Detail(string data)
         {
             CareerModel result = new CareerModel();
             var career = JsonConvert.DeserializeObject<CareerGet>(data);
-            if (career.UserID != null)
+            if (career.UserID != 0)
             {
                 result = _careerService.Value.GetCareerDetailByUserID(career);
                 if (result != null)
@@ -78,15 +110,15 @@ namespace pj3_ui.Controllers
         }
         public IActionResult GetDetailInfor(CareerGet careerGet)
         {
-           
+
             if (HttpContext.Session.TryGetValue("UserID", out byte[] userIdBytes))
             {
                 careerGet.UserID = HttpContext.Session.GetInt32("UserID").Value;
                 //result = _careerService.Value.GetCareerDetailByUserID(careerGet);
-                      
+
             }
             else
-            {              
+            {
                 //result = _careerService.Value.GetCareerByID(careerGet);
             }
             return Json(new { success = true, result = careerGet });
@@ -94,10 +126,11 @@ namespace pj3_ui.Controllers
 
         public IActionResult InsertCareerJob(CareerJobGet careerGet)
         {
-            CareerJobModel careerJobModel = new CareerJobModel() { 
+            CareerJobModel careerJobModel = new CareerJobModel()
+            {
                 JobID = careerGet.JobID,
                 UserID = HttpContext.Session.GetInt32("UserID").Value
-        };
+            };
             var result = _careerService.Value.InsertCareerJob(careerJobModel);
             if (result > 0)
             {
@@ -107,12 +140,12 @@ namespace pj3_ui.Controllers
         }
 
         public IActionResult CheckResume()
-        {           
+        {
 
             var result = _userService.Value.GetUser(new Login() { ID = HttpContext.Session.GetInt32("UserID").Value });
             if (result != null)
             {
-                if(result.UserModel.FileName != null)
+                if (result.UserModel.FileName != null)
                 {
                     return Json(new { success = true, result = 1 });
                 }
@@ -120,9 +153,9 @@ namespace pj3_ui.Controllers
                 {
                     return Json(new { success = true, result = 0 });
                 }
-               
+
             }
-            return Json(new { success = false, result = 0,error = "Không tìm thấy dữ liệu" });
+            return Json(new { success = false, result = 0, error = "Không tìm thấy dữ liệu" });
         }
     }
 }

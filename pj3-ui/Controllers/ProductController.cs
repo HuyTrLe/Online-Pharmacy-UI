@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using pj3_ui.Models.Feedback;
 using pj3_ui.Models.Product;
+using pj3_ui.Service.Category;
 using pj3_ui.Service.Home;
 using pj3_ui.Service.Product;
 using pj3_ui.Service.ProductImage;
@@ -53,7 +55,7 @@ namespace pj3_ui.Controllers
                 TotalPages = totalPages
             };
             var categories = _categoryService.Value.GetCategory();
-            ViewBag.Categories = new SelectList(categories.Select(s=> new SelectListItem
+            ViewBag.Categories = new SelectList(categories.Select(s => new SelectListItem
             {
                 Text = $"{s.Name} (ID: {s.ID})",
                 Value = s.ID.ToString()
@@ -147,10 +149,48 @@ namespace pj3_ui.Controllers
             }
         }
 
+
+        public IActionResult ProductList()
+        {
+            var result = _productService.Value.GetProduct();
+            var categoryList = _categoryService.Value.GetCategory();
+
+            ViewBag.category = categoryList;
+
+			return View(result);
+        }
+        
+
+        public IActionResult ProductDetails(int ID)
+        {
+			var product = _productService.Value.GetProductByID(ID);
+
+			if (product == null)
+			{
+				// Xử lý trường hợp sản phẩm không tồn tại
+				return View("ProductNotFound");
+			}
+
+			return View(product);
+		}
+        public IActionResult AdminProductList()
+        {
+            var result = _productService.Value.GetProduct();
+            return View(result);
+        }
         public int UpdateProduct(ProductModel product)
         {
             var result = _productService.Value.UpdateProduct(product);
             return result;
         }
+
+        public IEnumerable<ProductModel> ProductCategory(int categoryID)
+		{
+            var product = _productService.Value.GetProductByCategoryID(categoryID);
+			return product;
+		}
+
+
     }
 }
+ 
