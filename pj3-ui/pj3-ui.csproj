@@ -30,8 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\admin\css\.vs\css\FileContentIndex\merges\" />
-    <Folder Include="wwwroot\admin\css\.vs\css\v17\" />
     <Folder Include="wwwroot\admin\img\products\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\FileContentIndex\merges\" />
     <Folder Include="wwwroot\admin\vendor\fontawesome-free\css\.vs\css\v17\" />
@@ -42,6 +40,7 @@
   <ItemGroup>
     <None Include="wwwroot\admin\css\.vs\css\FileContentIndex\267e884d-b5cc-473e-8772-8f0d6c422771.vsidx" />
     <None Include="wwwroot\admin\css\.vs\css\FileContentIndex\read.lock" />
+    <None Include="wwwroot\admin\css\.vs\css\v17\.wsuo" />
     <None Include="wwwroot\admin\css\.vs\slnx.sqlite" />
     <None Include="wwwroot\admin\img\undraw_posting_photo.svg" />
     <None Include="wwwroot\admin\img\undraw_profile.svg" />

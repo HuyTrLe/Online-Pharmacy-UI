@@ -88,11 +88,14 @@
     public class SpecUrl
     {
         public string GetSpecification { get; set; }
+        public string GetSpecificationByID { get; set; }
+
+
         public string InsertSpecification { get; set; }
 
         public string UpdateSpecification { get; set; }
 
-        public string GetSpecificationByID { get; set; }
+        
 
         public string DeleteSpecification { get; set; }
 
@@ -109,6 +112,8 @@
         public string GetProductSpecificationByID { get; set; }
 
         public string DeleteProductSpecification { get; set; }
+
+        public string GetSpecificationByID { get; set; }
     }
     public class CareerUrl
     {

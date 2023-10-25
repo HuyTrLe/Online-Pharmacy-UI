@@ -61,5 +61,8 @@ namespace pj3_ui.Controllers
             var result = _productSpecService.Value.DeleteProductSpecification(productSpec);
             return result;
         }
+
+       
+
     }
 }

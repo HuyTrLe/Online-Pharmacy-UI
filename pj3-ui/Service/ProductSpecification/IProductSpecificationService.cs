@@ -9,6 +9,9 @@ namespace pj3_ui.Service.Specification
         int UpdateProductSpecification(ProductSpecification productSpec);
 
         int DeleteProductSpecification(ProductSpecification productSpec);
+
+        int InsertProductSpecificationByID(ProductSpecification productSpec);
         ProductSpecification GetProductSpecificationByID(int ID);
+        
     }
 }

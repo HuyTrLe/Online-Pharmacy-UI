@@ -164,15 +164,14 @@ namespace pj3_ui.Controllers
         public IActionResult ProductDetails(int ID)
         {
 			var product = _productService.Value.GetProductByID(ID);
+            var productSpec = _productSpecificationService.Value.GetProductSpecificationByID(ID);
 
-			if (product == null)
-			{
-				// Xử lý trường hợp sản phẩm không tồn tại
-				return View("ProductNotFound");
-			}
+            ViewBag.productSpec = productSpec;
 
-			return View(product);
+
+            return View(product);
 		}
+      
         public IActionResult AdminProductList()
         {
             var result = _productService.Value.GetProduct();

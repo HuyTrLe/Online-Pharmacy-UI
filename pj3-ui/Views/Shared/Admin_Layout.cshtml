@@ -21,8 +21,8 @@
 
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.css" rel="stylesheet">
-    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+@*    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+*@    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <!--JQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--Sweetalert-->
@@ -123,8 +123,8 @@
 
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="@Url.Action("IndexAdmin", "Category")">Category</a>
+                        <a class="collapse-item" href="@Url.Action("InsertCategory", "Category")">Category</a>
                     </div>
                 </div>
             </li>

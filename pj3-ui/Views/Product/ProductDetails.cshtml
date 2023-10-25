@@ -74,14 +74,20 @@
                                 </div>
                                 <div class="col-md-6 single-top-right">
                             <h3 class="item_name">@Model.Name</h3>
-                                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
-
-
                             <p class="single-price-text">@Model.Description</p>
-                                   
+                                        @{
+                                        var productSpec = ViewBag.productSpec;
+                             
+                                               <p class="single-price-text"> @productSpec.SpecName</p>
+                                                <p class="single-price-text"> @productSpec.SpecValue</p>
+                                                <p class="single-price-text">@productSpec.SpecUnit</p>
+                                        }
                                 </div>
-                                <div class="clearfix"> </div>
+                        
                             </div>
+                    <ul>
+                        
+                    </ul>
                        
                     
                 </div>

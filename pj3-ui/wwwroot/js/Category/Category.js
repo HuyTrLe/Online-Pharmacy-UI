@@ -3,8 +3,8 @@
     $(document).on("click", ".btnSubmit", function () {
         let modalContent = $(this).closest(".modal-content");
 
-        let name = modalContent.find("#name").val();
-        let categoryID = modalContent.find("#ID").val();
+        let Name = modalContent.find("#name").val();
+        let ID = modalContent.find("#ID").val();
         let deleted = modalContent.find("#delete").val();
 
         if (deleted === "Deactive") {
@@ -24,23 +24,24 @@
                     deleted = false;
                     return;
                 }
-                performUpdate(name, categoryID);
+                performUpdate(Name,ID);
             });
         } else {
             // For other cases (e.g., "Active"), set the "Deleted" value to 0 and proceed with the AJAX request.
-            performUpdate(name, categoryID);
+            performUpdate(Name,ID);
         }
     });
 });
 
-function performUpdate(name, categoryID) {
+function performUpdate(Name,ID) {
     var formData = new FormData();
-    formData.append("ID", productID);
-    formData.append("Name", name);
+    formData.append("ID", ID);
+    formData.append("Name", Name);
+
 
     $.ajax({
         type: "POST",
-        url: "/Category/UpdateAdmin",
+        url: "/Category/UpdateCategory",
         data: formData,
         dataType: 'json',
         processData: false,
@@ -67,3 +68,4 @@ function performUpdate(name, categoryID) {
         }
     });
 }
+

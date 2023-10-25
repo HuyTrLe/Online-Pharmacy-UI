@@ -1,234 +1,101 @@
-﻿@model IEnumerable<pj3_ui.Models.Product.CategoryModel>
-
+﻿@using pj3_ui.Models.Product;
+@model ProductsListViewModel;
 @{
-	ViewData["Title"] = "";
-	Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CategoryItems)
+        {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Update</a>
+                </td>
+                @foreach (var items in Model.CategoryItems)
+                {
+                    <div class="modal fade" id="detailModal_@item.ID" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Update</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
 
-<!DOCTYPE html>
-<html lang="en">
+                                    <dl class="row">
+                                        <dt class="col-sm-2">ID:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" id="ID" value="@item.ID" readonly>
+                                        </dd>
+                                    </dl>
 
-<head>
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Name:</dt>
+                                        <dd class="col-sm-10">
+                                            <input class="form-control" id="name" value="@item.Name">
+                                        </dd>
+                                    </dl>
 
-    <!-- Custom styles for this page -->
-    <link href="~/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+                                    
 
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Database for Table Category</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                ID
-                                            </th>
-                                            
-                                            <th>
-                                                Name
-                                            </th>
-                                           
-                                            <th>
-                                                Action
-                                            </th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @item.ID
-                                                </td>
-                                               
-                                                <td>
-                                                    @item.Name
-                                                </td>
-                                                
-                                                <td>
-                                                    <a class="btn btn-info" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Detail</a>
-                                                    <a class="btn btn-warning" href="#" data-toggle="modal" data-target="#editModal_@item.ID">Edit</a>
-                                                    <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteModal_@item.ID">Delete</a>
-                                                </td>
-                                                @foreach (var items in Model)
-                                                {
-                                                    <div class="modal fade" id="detailModal_@item.ID" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Details</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Include the details you want to display -->
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">ID:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.ID" readonly>
-                                                                        </dd>
-                                                                    </dl>
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">Name:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.Name" readonly>
-                                                                        </dd>
-                                                                    </dl>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                }
-                                                 @foreach (var items in Model)
-                                                {
-                                                    <div class="modal fade" id="editModal_@item.ID" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Edit</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Include the details you want to display -->
-                                                                    
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">Name:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.Name">
-                                                                        </dd>
-                                                                    </dl>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-warning" value="Save" data-dismiss="modal">Save Edit</button>
-                                                                   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-                                                @foreach (var items in Model)
-                                                {
-                                                    <div class="modal fade" id="deleteModal_@item.ID" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Delete</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Include the details you want to display -->
-
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">ID:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.ID" readonly>
-                                                                        </dd>
-                                                                    </dl>
-                                                                    <dl class="row">
-                                                                        <dt class="col-sm-2">Name:</dt>
-                                                                        <dd class="col-sm-10">
-                                                                            <input class="form-control" value="@item.Name" readonly>
-                                                                        </dd>
-                                                                    </dl>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete </button>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5"></div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="dataTable_previous">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item ">
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                        </li>
-                                            <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <input type="submit" class="btn btn-secondary btnSubmit" id="btnSubmit_@item.ID" value="Update">
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination d-flex justify-content-center">
+    @if (Model.TotalPages > 1)
+    {
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Category/IndexAdmin?page=@(Model.CurrentPage - 1)">Previous</a>
+                </li>
+            }
 
-                </div>
-                <!-- /.container-fluid -->
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="/Category/IndexAdmin?page=@i">@i</a>
+                </li>
+            }
 
-            </div>
-            <!-- End of Main Content -->
-            <!-- End of Footer -->
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Category/IndexAdmin?page=@(Model.CurrentPage + 1)">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+<script src="~/js/Category/Category.js"></script>
 
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="~/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="~/admin/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/admin/js/demo/datatables-demo.js"></script>
-
-</body>
-
-</html>
