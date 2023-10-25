@@ -18,13 +18,13 @@
 						var result = `"<div class="col-lg-4 col-md-6 service_grid_btm_left mt-lg-5 mt-4" >
 
 																<div >
-																	<img src="~/assets/images/${item.Thumbnail} " alt=" " class="img-fluid" width="300" height="300"/>
+																	<img src="/assets/images/${item.thumbnail} " alt=" " class="img-fluid" width="300" height="300"/>
 																	<div class="service_grid_btm_left2">
-																		<h5>${item.Name}</h5>
+																		<h5>${item.name}</h5>
 																		<a>Maecenas sodales eu velit in varius. vitae sem vitae urna tempus commodo.</a>
 																		<br></br>
 																		<div class="read">
-																			<a class="btn" href="@Url.Action("ProductDetails", "Product", new {${ ID = item.ID} })">Read More</a>
+																			<a class="btn" href="/Product/ProductDetails/${item.id}">Read More</a>
 																		</div>
 																	</div>
 

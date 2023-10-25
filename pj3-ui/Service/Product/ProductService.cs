@@ -34,7 +34,7 @@ namespace pj3_ui.Service.Product
 
         public IEnumerable<ProductModel> GetProduct()
         {
-            var callRespones = CallApi<IEnumerable<ProductModel>, HttpResultObject>.PostAsJsonAsync(null, _appSetting.UrlApi, _appSetting.ProductUrl.GetProduct);
+            var callRespones = CallApi<IEnumerable<ProductModel>, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.ProductUrl.GetProduct);
             if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
