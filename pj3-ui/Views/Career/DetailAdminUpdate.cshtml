@@ -25,7 +25,28 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Price</label><input type="number" class="form-control" placeholder="Enter Price" id="Price" value="@Model.Price"></div>
-                    <div class="col-md-6"><label class="labels">Status</label><input type="text" class="form-control" placeholder="Enter Status" id="Status" value="@Model.Status"></div>
+                    <div class="col-md-6"><label class="labels">Status</label>
+                    @if(Model.Status == 0)
+                    {
+                        <div>
+                            <select class="form-control" id="Status" name="cars">
+                                <option value="0" selected>Active</option>
+                                <option value="1">Deactive</option>
+                            </select>
+                        </div>
+                       
+                    }
+                    else
+                    {
+                        <div>
+                            <select class="form-control" id="Status" name="cars">
+                                <option value="0">Active</option>
+                                <option value="1" selected>Deactive</option>
+                            </select>
+                        </div>
+                      
+                    }
+                        </div>
                 </div>
                 <div class="row mt-3">
                 <div class="col-md-12"><label class="labels">Skill</label><input type="text" class="form-control" placeholder="Enter Skill" id="Skill" value="@Model.Skill"></div>
@@ -34,7 +55,7 @@
                     <div class="col-md-12"><label class="labels">ShortDescription</label><textarea rows="4" cols="150" class="form-control" placeholder="Enter ShortDescription" id="ShortDescription">@Model.ShortDescription</textarea></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Description</label><textarea rows="10" cols="250" class="form-control" placeholder="Enter Description" id="Description">>@Model.Description</textarea> </div>
+                    <div class="col-md-12"><label class="labels">Description</label><textarea rows="10" cols="250" class="form-control" placeholder="Enter Description" id="Description">@Model.Description</textarea> </div>
                 </div>
                 <div class="row mt-3">
                     <button class="btn btn-primary" id="btnUpdate">Update</button>

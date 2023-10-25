@@ -124,5 +124,6 @@
         public string UpdateCareerJob { get; set; }
         public string GetCareerJob { get; set; }
         public string GetCareerJobAdmin { get; set; }
+        public string UpdateStatusCareerJob { get; set; }
     }
 }

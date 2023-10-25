@@ -46,8 +46,24 @@ $(document).ready(function () {
             <div class="borderDetail row mt-3 school_${newIndex}">
                <input type="text" class="form-control" id="ID" value="@item.ID" hidden>
                 <div class="col-md-6"><label class="labels">School Name</label><input type="text" class="form-control" id="SchoolName" value=""></div>
-                <div class="col-md-3"><label class="labels">Type</label><input type="text" class="form-control" id="SchoolType" value=""></div>
-                <div class="col-md-3"><label class="labels">Degree</label><input type="text" class="form-control" id="Degree" value=""></div>
+                <div class="col-md-3"><label class="labels">Type</label>
+                  <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College " selected>College</option>
+                                                <option value="University ">University</option>
+                                                <option value="Master">Master</option>
+                                            </select>
+                                        </div>
+                </div>
+                <div class="col-md-3"><label class="labels">Degree</label> <div>
+                                            <select class="form-control" id="Degree" >
+                                                <option value="Associate" selected>Associate</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+                </div>
                 <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" id="From" value=""></div>
                 <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control" id="To" value=""></div>
             </div>

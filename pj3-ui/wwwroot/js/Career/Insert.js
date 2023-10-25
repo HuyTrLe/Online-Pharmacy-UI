@@ -7,14 +7,15 @@ $("#btnInsert").on("click", function () {
     dataCareer.TimeEnd = document.getElementById("TimeEnd").value;
     dataCareer.Price = document.getElementById("Price").value;
     dataCareer.Status = document.getElementById("Status").value;
+    dataCareer.Skill = document.getElementById("Skill").value;
     dataCareer.ShortDescription = document.getElementById("ShortDescription").value;
     dataCareer.Description = document.getElementById("Description").value;
     if (dataCareer.Title == "" || dataCareer.Position == "" || dataCareer.TimeStart == "" || dataCareer.TimeEnd == "" || dataCareer.Price == 0 || dataCareer.ShortDescription == "" || dataCareer.Description == "") {
         Swal.fire("Please fill all field");
         return;
     }
-    else if (dataCareer.ShortDescription.length > 500) {
-        Swal.fire("Short Description is too long");
+    else if (dataCareer.ShortDescription.length > 500 || dataCareer.ShortDescription.length < 100) {
+        Swal.fire("Short Description length is need between 100 and 500");
         return;
     }
     else

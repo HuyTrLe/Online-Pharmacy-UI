@@ -23,18 +23,26 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Price</label><input type="number" class="form-control" placeholder="Enter Price" id="Price" value=""></div>
-                    <div class="col-md-6"><label class="labels">Status</label><input type="text" class="form-control" placeholder="Enter Status" id="Status" value=""></div>
+                    <div class="col-md-6"><label class="labels">Status</label>
+                        <div>
+                            <select class="form-control" id="Status">
+                                <option value="0" selected>Active</option>
+                                <option value="1">Deactive</option>
+                            </select>
+                        </div>
+                       
+                </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Skill</label><input type="text" class="form-control" placeholder="Enter Skill" id="Skill" value=""></div>
+                    <div class="col-md-6"><label class="labels">Skill</label><input type="text" class="form-control" placeholder="Enter Skill" id="Skill" value=""></div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-2">
                     <div class="col-md-12"><label class="labels">ShortDescription</label><textarea rows="4" cols="150" class="form-control" placeholder="Enter ShortDescription" id="ShortDescription"></textarea></div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-2">
                     <div class="col-md-12"><label class="labels">Description</label><textarea rows="7" cols="250" class="form-control" placeholder="Enter Description" id="Description"></textarea> </div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-2">
                     <button class="btn btn-primary" id="btnInsert">Insert</button>
                 </div>
             </div>
