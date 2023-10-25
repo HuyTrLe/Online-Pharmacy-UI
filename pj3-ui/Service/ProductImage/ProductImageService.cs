@@ -12,6 +12,20 @@ namespace pj3_ui.Service.ProductImage
         {
             _appSetting = appSetting;
         }
+
+        public IEnumerable<ProductImageModel> CheckProductImage(ProductImageModel ProductImage)
+        {
+            var callRespones = CallApi<ProductImageModel, HttpResultObject>.PostAsJsonAsync(ProductImage, _appSetting.UrlApi, _appSetting.ProductImageUrl.CheckProductImage);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<IEnumerable<ProductImageModel>>();
+                return result;
+            }
+            return null;
+        }
+
         public int DeleteProductImage(ProductImageModel ProductImage)
         {
             var callRespones = CallApi<ProductImageModel, HttpResultObject>.PostAsJsonAsync(ProductImage, _appSetting.UrlApi, _appSetting.ProductImageUrl.DeleteProductImage);

@@ -74,6 +74,8 @@
         public string DeleteProductImage { get; set; }
 
         public string GetProductImageByID { get; set; }
+
+        public string CheckProductImage { get; set; }
     }
 
     public class CategoryUrl
@@ -109,6 +111,10 @@
         public string GetProductSpecificationByID { get; set; }
 
         public string DeleteProductSpecification { get; set; }
+
+        public string CheckSpecName { get; set; }
+
+        public string CheckSpecCount { get; set; }
     }
     public class CareerUrl
     {

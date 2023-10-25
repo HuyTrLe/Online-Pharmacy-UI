@@ -1,4 +1,28 @@
 ﻿$(document).ready(function () {
+    function checkUniquenessByName(name, successCallback, errorCallback) {
+        let SpecificationModel = {};
+        SpecificationModel.Name = name;
+
+        let nameArr = { spec: SpecificationModel };
+
+        // Check for uniqueness using AJAX
+        $.ajax({
+            type: "POST",
+            url: "/Specification/CheckUniqueByName",
+            data: nameArr,
+            dataType: 'json',
+            success: function (result) {
+                if (result == -1) {
+                    // The name is not unique, call the error callback
+                    errorCallback();
+                } else {
+                    // The name is unique, call the success callback
+                    successCallback();
+                }
+            }
+        });
+    }
+
     $(document).on("click", ".btnSubmit", function () {
         var specId = $(this).data("spec-id");
         var modal = $("#detailModal_" + specId);
@@ -14,6 +38,20 @@
         formData.append("Name", name);
         formData.append("Unit", unit);
 
+        checkUniquenessByName(name, function () {
+            // Name is unique, proceed with updating the specification
+            updateSpecification(formData);
+        }, function () {
+            // Name is not unique, show an error message
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Name is already in use.'
+            });
+        });
+    });
+
+    function updateSpecification(formData) {
         $.ajax({
             type: "POST",
             url: "/Specification/Update",
@@ -41,7 +79,8 @@
                 }
             }
         });
-    });
+    }
+
 
     // Handle the delete action for the same item
     $(".btnDelete").on("click", function () {

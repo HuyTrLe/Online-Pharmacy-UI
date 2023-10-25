@@ -5,6 +5,46 @@
     ViewData["Title"] = "ProductSpec";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
+<div class="text-left mb-2">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addImageModal">
+        Add Image
+    </button>
+</div>
+<!-- Modal for adding an image -->
+<div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="addImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addImageModalLabel">Add Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addImageForm" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="productImage">Upload Image</label>
+                        <input type="file" class="form-control-file" id="productImage" name="productImage" accept="image/*" onchange="displayImage(event, 'previewImage')">
+                        <img id="previewImage" src="#" alt="" style="max-height: 250px; max-width: 200px" />
+                    </div>
+                    <div class="form-group">
+                        <label for="productID">Product</label>
+                        <select class="form-control" id="productID" name="productID">
+                            @foreach (var productItem in ViewBag.Product)
+                            {
+                                <option value="@productItem.Value">@productItem.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btnAdd" class="btn btn-primary">Add Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <table class="table">
     <thead class="thead-dark">
@@ -39,6 +79,7 @@
                 </th>
                 <td>
                     <a class="btn btn btn-warning" href="#" data-toggle="modal" data-target="#detailModal_@item.ID">Update</a>
+                    <button class="btn btn-danger btnDelete" data-spec-id="@item.ID">Delete</button>
                 </td>
                 <!-- Updated modal structure with unique IDs -->
                 <div class="modal fade" id="detailModal_@item.ID" role="dialog">
@@ -67,6 +108,7 @@
                                     <dt class="col-sm-2">Image:</dt>
                                     <dd class="col-sm-10">
                                         <img src="@item.Image" style="max-height: 250px; max-width: 200px">
+                                        <input type="hidden" id="existingImage_@item.ID" value="@item.Image" />
                                         <br/>
                                         <input type="file" id="productImage_@item.ID" name="productImages" accept="image/*" onchange="displayImage(event, 'previewImage_@item.ID')" />
                                         <img id="previewImage_@item.ID" src="#" alt="" style="max-height: 250px; max-width: 200px" />

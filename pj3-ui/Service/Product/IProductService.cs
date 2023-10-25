@@ -18,6 +18,7 @@ namespace pj3_ui.Service.Product
 
         IEnumerable<ProductModel> GetProductByID(ProductModel product);
 
+        ProductModel CheckUniqueByName(ProductModel product);
     }
 
 }
