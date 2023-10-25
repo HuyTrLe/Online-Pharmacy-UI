@@ -2,16 +2,17 @@
 @model List<UserModelResult>;
 
 @{
+    var stt = 0;
     ViewData["Title"] = "Feedback";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 <div class="d-flex justify-content-center">
     <div class="table-responsive">
 
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>User Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
@@ -23,9 +24,10 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    stt++;
                     <tr>
                         <td>
-                            @item.UserModel.ID
+                            @stt
                         </td>
                         <td>
                             @item.UserModel.UserName

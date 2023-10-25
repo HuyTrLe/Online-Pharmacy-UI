@@ -71,8 +71,11 @@ $(".btnApply").on("click", function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'User have not resume, please update resume!'
-                    })
+                        text: 'User have not resume, please update resume!',
+                        showConfirmButton: true,
+                    }).then((result) => {
+                        window.location = "/Career/Index";
+                    })                     
                 }
                 
             } else if (result.isDenied) {
