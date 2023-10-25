@@ -2,16 +2,19 @@
 @model List<CareerModel>;
 
 @{
+    var stt = 0;
     ViewData["Title"] = "Feedback";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <div class="d-flex justify-content-center">
     <div class="table-responsive">
 
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Title</th>
                     <th>ShortDecripton</th>
                     <th>Time Start</th>
@@ -23,9 +26,10 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    stt++;
                     <tr>
                         <td>
-                            @item.ID
+                            @stt
                         </td>
                         <td style="max-width: 100px; overflow: hidden;">
                             @item.Title
@@ -137,7 +141,6 @@
         </ul>
     }
 </div> *@
-
 
 
 

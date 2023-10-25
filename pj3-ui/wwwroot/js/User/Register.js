@@ -29,7 +29,7 @@
                         if (result > 0) {
                             Swal.fire({
                                 icon: 'sucess!',
-                                title: 'Insert Success!',
+                                title: 'Register Success!',
                                 showConfirmButton: true
                             }).then((result) => {
                                 window.location = "/Home/Index";

@@ -82,10 +82,14 @@ $(document).ready(function () {
             var schoolElement = document.querySelector(".school_" + listIndex[i]);
             valuesEdu.ID = schoolElement.querySelector("input#ID").value;
             valuesEdu.SchoolName = schoolElement.querySelector("input#SchoolName").value;
-            valuesEdu.SchoolType = schoolElement.querySelector("input#SchoolType").value;
-            valuesEdu.Degree = schoolElement.querySelector("input#Degree").value;
+            valuesEdu.SchoolType = schoolElement.querySelector("select#SchoolType").value;
+            valuesEdu.Degree = schoolElement.querySelector("select#Degree").value;
             valuesEdu.From = schoolElement.querySelector("input#From").value;
-            valuesEdu.To = schoolElement.querySelector("input#To").value;          
+            valuesEdu.To = schoolElement.querySelector("input#To").value;
+            if (valuesEdu.From > valuesEdu.To) {
+                Swal.fire('FromDate Education need smaller ToDate')
+                return;
+            }
             ListEducation.push(valuesEdu);
         }
         //
