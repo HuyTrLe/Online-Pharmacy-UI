@@ -77,10 +77,23 @@
                             <p class="single-price-text">@Model.Description</p>
                                         @{
                                         var productSpec = ViewBag.productSpec;
-                             
-                                               <p class="single-price-text"> @productSpec.SpecName</p>
-                                                <p class="single-price-text"> @productSpec.SpecValue</p>
-                                                <p class="single-price-text">@productSpec.SpecUnit</p>
+
+                                <table>
+                                    <tr>
+                                        <td class="single-price-text">Output:</td>
+                                        <td>@productSpec.SpecName</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="single-price-text">Machine Dimension:</td>
+                                        <td>@productSpec.SpecValue</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="single-price-text">Shipping Weight (in kg):</td>
+                                        <td>@productSpec.SpecUnit</td>
+                                    </tr>
+                                </table>
+
+
                                         }
                                 </div>
                         
@@ -97,3 +110,20 @@
     </div>
 </body>
 </html>
+<style>
+    table {
+        border: 2px solid #000; /* Đường viền to 2px, màu đen */
+        border-collapse: collapse; /* Loại bỏ khoảng trắng giữa các ô */
+        width: 100%; /* Tùy chỉnh kích thước bảng theo nhu cầu của bạn */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền to 1px, màu đen */
+        padding: 8px; /* Khoảng cách bên trong ô */
+        text-align: left; /* Căn chỉnh nội dung sang trái */
+    }
+
+    th {
+        background-color: #f2f2f2; /* Màu nền cho ô tiêu đề */
+    }
+</style>
