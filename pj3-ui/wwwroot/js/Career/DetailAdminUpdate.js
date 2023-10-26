@@ -11,7 +11,7 @@ $("#btnUpdate").on("click", function () {
     dataCareer.Skill = document.getElementById("Skill").value;
     dataCareer.ShortDescription = document.getElementById("ShortDescription").value;
     dataCareer.Description = document.getElementById("Description").value;
-    if (dataCareer.TimeStart > dataCareer.TimeEnd) {
+    if (dataCareer.TimeStart >= dataCareer.TimeEnd) {
         Swal.fire("Time Start need smaller Time End");
         return;
     }

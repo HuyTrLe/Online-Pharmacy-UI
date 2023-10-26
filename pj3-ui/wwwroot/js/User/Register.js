@@ -63,9 +63,9 @@
    
 })
 function checkValid(dataUser) {
-    if (dataUser.UserName == "" || dataUser.Email == "" || dataUser.PhoneNumber == "" || dataUser.Address == "")
+    if (dataUser.UserName == "" || dataUser.Email == "" || dataUser.PhoneNumber == "" || dataUser.Address == "" || dataUser.Password == "" || dataUser.ConfirmPassword == "")
         return false;
-    if (dataUser.UserName == undefined || dataUser.Email == undefined || dataUser.PhoneNumber == undefined || dataUser.Address == undefined)
+    if (dataUser.UserName == undefined || dataUser.Email == undefined || dataUser.PhoneNumber == undefined || dataUser.Address == undefined || dataUser.Password == undefined || dataUser.ConfirmPassword == undefined)
         return false;
     return true
 }

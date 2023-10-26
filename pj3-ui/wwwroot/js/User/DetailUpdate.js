@@ -86,11 +86,14 @@ $(document).ready(function () {
             valuesEdu.Degree = schoolElement.querySelector("select#Degree").value;
             valuesEdu.From = schoolElement.querySelector("input#From").value;
             valuesEdu.To = schoolElement.querySelector("input#To").value;
-            if (valuesEdu.From > valuesEdu.To) {
+            if (valuesEdu.From >= valuesEdu.To) {
                 Swal.fire('FromDate Education need smaller ToDate')
                 return;
             }
-            ListEducation.push(valuesEdu);
+            else {
+                ListEducation.push(valuesEdu);
+            }
+           
         }
         //
         let valueUser = {};
@@ -198,7 +201,10 @@ function GetIndexHighest() {
             if (classList[i].startsWith("school_")) {
                 // Lấy chỉ số từ class và so sánh với chỉ số cao nhất.
                 var index = parseInt(classList[i].substring(7));
-                listIndex.push(index);
+                var exits = listIndex.findIndex((element) => element == index)
+                if (exits == -1) {
+                    listIndex.push(index);
+                } 
                 highestIndex++;
             }
         }
