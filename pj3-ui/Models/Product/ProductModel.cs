@@ -26,7 +26,7 @@
 
         public int ProductID { get; set; }
 
-        public string Image { get; set; } 
+        public string Image { get; set; } = string.Empty;
     }
 
     public class ProductSpecification

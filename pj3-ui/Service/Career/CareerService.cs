@@ -158,5 +158,18 @@ namespace pj3_ui.Service.Career
             }
             return null;
         }
+
+        public int UpdateStatusCareerJob(UpdateStatusCareerJob UpdateStatusCareerJob)
+        {
+            var callRespones = CallApi<UpdateStatusCareerJob, HttpResultObject>.PostAsJsonAsync(UpdateStatusCareerJob, _appSetting.UrlApi, _appSetting.CareerUrl.UpdateStatusCareerJob);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = Convert.ToInt32(jObject["Data"]);
+                return result;
+            }
+            return 0;
+        }
     }
 }

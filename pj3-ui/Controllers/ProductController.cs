@@ -157,7 +157,7 @@ namespace pj3_ui.Controllers
 
             ViewBag.category = categoryList;
 
-			return View(result);
+            return View(result);
         }
         
 
@@ -189,6 +189,16 @@ namespace pj3_ui.Controllers
 			return product;
 		}
 
+        public int CheckUniqueByName(ProductModel product)
+        {
+            product.Name = product.Name.Replace(" ", "");
+            var result = _productService.Value.CheckUniqueByName(product);
+            if (result != null)
+            {
+                return -1;
+            }
+            return 1;
+        }
 
     }
 }

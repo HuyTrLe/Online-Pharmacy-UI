@@ -12,6 +12,8 @@ namespace pj3_ui.Service.ProductImage
 
         int DeleteProductImage(ProductImageModel ProductImage);
 
+        IEnumerable<ProductImageModel> CheckProductImage(ProductImageModel ProductImage);
+
         IEnumerable<ProductImageModel> GetProductImageByID(ProductImageModel productImage);
         List<ProductImageModel> InsertProductImage(int productId, List<IFormFile> productImages);
     }

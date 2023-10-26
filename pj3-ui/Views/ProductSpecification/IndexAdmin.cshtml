@@ -6,6 +6,71 @@
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 
+<div class="text-left mb-2">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addSpecModal">
+        Add Specification
+    </button>
+</div>
+<div class="modal fade" id="addSpecModal" tabindex="-1" role="dialog" aria-labelledby="addSpecModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSpecModalLabel">Add Specification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addSpecForm" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="ProductID">Product ID</label>
+                        <select class="form-control" id="ProductID" name="ProductID">
+                            @foreach (var productItem in ViewBag.Product)
+                            {
+                                <option value="@productItem.Value">@productItem.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="SpecID">Specification ID</label>
+                        <select class="form-control" id="SpecID" name="SpecID">
+                            @foreach (var specItem in ViewBag.Spec)
+                            {
+                                <option value="@specItem.Value" data-name="@specItem.Text.Split(" Unit: ")[0]" data-unit="@specItem.Text.Split(" Unit: ")[1]">
+                                    @specItem.Text
+                                </option>
+                            }
+                        </select>
+                    </div>
+
+
+                    <!-- Generate button to populate inputs -->
+                    <button type="button" id="generateSpecInputs" class="btn btn-dark">Add</button>
+
+                    <!-- Inputs for SpecName, SpecUnit, and SpecValue -->
+                    <div class="form-group">
+                        <label for="SpecName">SpecName</label>
+                        <input type="text" class="form-control" id="SpecName" name="SpecName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="SpecUnit">SpecUnit</label>
+                        <input type="text" class="form-control" id="SpecUnit" name="SpecUnit" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="SpecValue">SpecValue</label>
+                        <input type="text" class="form-control" id="SpecValue" name="SpecValue" placeholder="Enter SpecValue">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="btnAdd">Add Specification</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -145,5 +210,8 @@
         </ul>
     }
 </div>
+<script type="text/javascript">
+
+</script>
 <script src="~/js/ProductSpecification/Update.js"></script>
 

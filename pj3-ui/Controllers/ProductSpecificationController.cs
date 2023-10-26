@@ -11,10 +11,12 @@ namespace pj3_ui.Controllers
     {
         private readonly Lazy<IProductSpecificationService> _productSpecService;
         private readonly Lazy<IProductService> _productService;
-        public ProductSpecificationController(IProductSpecificationService productSpecService, IProductService productService)
+        private readonly Lazy<ISpecificationService> _specService;
+        public ProductSpecificationController(IProductSpecificationService productSpecService, IProductService productService, ISpecificationService specService)
         {
             _productSpecService = new Lazy<IProductSpecificationService>(() => productSpecService);
             _productService = new Lazy<IProductService>(() => productService);
+            _specService = new Lazy<ISpecificationService>(() => specService);
         }
         public IActionResult IndexAdmin(int page = 1, int pageSize = 10)
         {
@@ -41,11 +43,17 @@ namespace pj3_ui.Controllers
                 TotalPages = totalPages
             };
             var product = _productService.Value.GetProducts();
+            var spec = _specService.Value.GetSpecification();
             ViewBag.Product = new SelectList(product.Select(s => new SelectListItem
             {
-                Text = $"Name: {s.Name}",
+                Text = $"Name: {s.Name} ID: {s.ID}",
                 Value = s.ID.ToString()
             }), "Value", "Text");
+            ViewBag.Spec = new SelectList(spec.Select(s => new SelectListItem
+            {
+                Text = $"Name: {s.Name} Unit: {s.Unit} (ID: {s.ID})",
+                Value = s.ID.ToString()
+            }), "Value" , "Text");
 
             return View(viewModel);
         }
@@ -62,7 +70,30 @@ namespace pj3_ui.Controllers
             return result;
         }
 
-       
+        public int InsertProductSpec(ProductSpecification productSpec)
+        {
+            var result = _productSpecService.Value.InsertProductSpecification(productSpec);
+            return result;
+        }
 
+        public int CheckSpecName(ProductSpecification productSpec)
+        {
+            var result = _productSpecService.Value.CheckSpecName(productSpec);
+            if (result != null)
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int CheckSpecCount(ProductSpecification productSpec)
+        {
+            var result = _productSpecService.Value.CheckSpecCount(productSpec);
+            if (result.Count(X => X.ProductID == productSpec.ProductID) >= 10)
+            {
+                return -1;
+            }
+            return 1;
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace pj3_ui.Models.Career
     public class CareerJob
     {
         public int CareerJobID { get; set; }
+        public int Status { get; set; }
         public CareerModel CareerModel { get; set; }
         public UserModel UserModel { get; set; }
     }
@@ -35,5 +36,11 @@ namespace pj3_ui.Models.Career
         public int CareerJobID { get; set; }
         public int Status { get; set; }
       
+    }
+    public class UpdateStatusCareerJob
+    {
+        public int CareerJobID { get; set; }
+        public int Status { get; set; }
+
     }
 }

@@ -15,16 +15,17 @@ namespace pj3_ui.Service.Product
             _appSetting = appSetting;
         }
 
-        public int CheckUniqueByName(ProductModel product)
+        public ProductModel CheckUniqueByName(ProductModel product)
         {
             var callRespones = CallApi<ProductModel, HttpResultObject>.PostAsJsonAsync(product, _appSetting.UrlApi, _appSetting.ProductUrl.CheckUniqueByName);
             if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
                 JObject jObject = JObject.Parse(data);
-                return Convert.ToInt32(jObject["Data"]);
+                var result = jObject["Data"].ToObject<ProductModel>();
+                return result;
             }
-            return 0;
+            return null;
         }
 
         public int DeleteProduct(ProductModel product)

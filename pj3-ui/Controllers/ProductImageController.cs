@@ -53,9 +53,64 @@ namespace pj3_ui.Controllers
             return View(viewModel);
         }
 
-        public int Update(ProductImageModel productImage)
+        public int Update(ProductImageModel productImage, IFormFile productImageFile)
         {
+            if (productImageFile != null && productImageFile.Length > 0)
+            {
+                // Generate a unique filename for the image
+                var uniqueFilename = Guid.NewGuid().ToString() + "_" + productImageFile.FileName;
+                var filePath = Path.Combine("wwwroot/admin/img/products", uniqueFilename);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    productImageFile.CopyTo(stream);
+                }
+
+                // Update the image path in the ProductImageModel
+                productImage.Image = "/admin/img/products/" + uniqueFilename;
+            }
+            else
+            {
+                productImage.Image = productImage.Image;
+            }
+
+            var result = _productImageService.Value.UpdateProductImage(productImage);
+            return result;
+        }
+
+        public int InsertImage(ProductImageModel productImage, IFormFile productImageFile)
+        {
+            if (productImageFile != null && productImageFile.Length > 0)
+            {
+                // Generate a unique filename for the image
+                var uniqueFilename = Guid.NewGuid().ToString() + "_" + productImageFile.FileName;
+                var filePath = Path.Combine("wwwroot/admin/img/products", uniqueFilename);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    productImageFile.CopyTo(stream);
+                }
+
+                // Update the image path in the ProductImageModel
+                productImage.Image = "/admin/img/products/" + uniqueFilename;
+            }
             var result = _productImageService.Value.InsertProductImage(productImage);
+            return result;
+        }
+
+        public int CheckProductImage(ProductImageModel productImage)
+        {
+            var result = _productImageService.Value.CheckProductImage(productImage);
+            if (result.Count(X => X.ProductID == productImage.ProductID) >= 4)
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int DeleteProductImage(ProductImageModel productImage)
+        {
+            var result = _productImageService.Value.DeleteProductImage(productImage);
             return result;
         }
     }

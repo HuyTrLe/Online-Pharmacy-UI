@@ -63,6 +63,12 @@ namespace pj3_ui.Controllers
         {
             return View();
         }
+        public IActionResult IndexAdminCareerJobApprove()
+        {
+            var result = _careerService.Value.GetCareerJobAdmin();
+            var resultModel = result.Where(x => x.Status != 0);
+            return View(resultModel.ToList());
+        }     
         public int InsertCareerAdmin(CareerModel careerModel)
         {
             var result = _careerService.Value.InsertCareer(careerModel);
@@ -73,10 +79,16 @@ namespace pj3_ui.Controllers
             var result = _careerService.Value.UpdateCareer(careerModel);
             return result;
         }
+        public IActionResult UpdateStatusCareerJob(UpdateStatusCareerJob careerModel)
+        {
+            var result = _careerService.Value.UpdateStatusCareerJob(careerModel);
+            return Redirect("IndexAdminCareerJob");
+        }
         public IActionResult IndexAdminCareerJob()
         {
             var result = _careerService.Value.GetCareerJobAdmin();
-            return View(result);
+            var resultModel = result.Where(x => x.Status == 0);
+            return View(resultModel.ToList());
         }
         public IActionResult Detail(string data)
         {

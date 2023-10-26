@@ -42,8 +42,92 @@
                             <div class="borderDetail row mt-3 school_@index">
                                 <input type="text" class="form-control" id="ID" value=@item.ID hidden>
                                 <div class="col-md-6"><label class="labels">School Name</label><input type="text" class="form-control" id="SchoolName" value="@item.SchoolName"></div>
-                                <div class="col-md-3"><label class="labels">Type</label><input type="text" class="form-control" id="SchoolType" value="@item.SchoolType"></div>
-                                <div class="col-md-3"><label class="labels">Degree</label><input type="text" class="form-control" id="Degree" value="@item.Degree"></div>
+
+                                <div class="col-md-3"><label class="labels">Type</label>
+                                    @if (item.SchoolType == "College")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College " selected>College</option>
+                                                <option value="University ">University</option>
+                                                <option value="Master">Master</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.SchoolType == "University")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College">College</option>
+                                                <option value="University" selected>University</option>
+                                                <option value="Master">Master</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College">College</option>
+                                                <option value="University" >University</option>
+                                                <option value="Intermediate " selected>Intermediate</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                </div>
+
+                                <div class="col-md-3"><label class="labels">Degree</label>
+                                    @if (item.Degree == "Associate")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree" >
+                                                <option value="Associate" selected>Associate</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.Degree == "Bachelor")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate" >Associate</option>
+                                                <option value="Bachelor" selected>Bachelor</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.Degree == "Master")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate">Associate</option>
+                                                <option value="Bachelor" >Bachelor</option>
+                                                <option value="Master" selected>Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate">Associate</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                                <option value="Master" >Master</option>
+                                                <option value="Doctoral" selected>Doctoral</option>
+                                            </select>
+                                        </div>
+                                    }                                   
+                                </div>
                                 <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" id="From" value="@item.From.ToString("yyyy-MM-dd")"></div>
                                 <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control" id="To" value="@item.To.ToString("yyyy-MM-dd")"></div>
                                 <div class="col-md-6"><button class="btn btn-primary profile-button btnDelete" data-id=@item.ID data-index=@index style="margin-top:5px">Delete</button></div>
