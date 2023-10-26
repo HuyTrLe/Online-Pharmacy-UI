@@ -93,7 +93,20 @@ $("#btnSubmit").on("click", function () {
             title: 'Error',
             text: 'Name, description, and category are required fields.'
         });
-    } else if (selectedSpecs.length === 0) {
+    } else if (name.length > 50) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Name max 50 characters'
+        });
+    } else if (description.length > 200) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Description max 200 characters'
+        });
+    }
+    else if (selectedSpecs.length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
