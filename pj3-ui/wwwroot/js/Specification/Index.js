@@ -28,6 +28,7 @@
         var modal = $("#detailModal_" + specId);
         var name = modal.find("#Name_" + specId).val();
         var unit = modal.find("#Unit_" + specId).val();
+        var originalName = $(this).data("original-name");
 
         if (unit.trim() === "") {
             unit = 'none';
@@ -38,17 +39,23 @@
         formData.append("Name", name);
         formData.append("Unit", unit);
 
-        checkUniquenessByName(name, function () {
-            // Name is unique, proceed with updating the specification
-            updateSpecification(formData);
-        }, function () {
-            // Name is not unique, show an error message
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Name is already in use.'
+        if (name != originalName) {
+            // Name has been modified, check uniqueness
+            checkUniquenessByName(name, function () {
+                // Name is unique, proceed with updating the specification
+                updateSpecification(formData);
+            }, function () {
+                // Name is not unique, show an error message
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Name is already in use.'
+                });
             });
-        });
+        } else {
+            // Name has not been modified, proceed with updating the specification
+            updateSpecification(formData);
+        }
     });
 
     function updateSpecification(formData) {
