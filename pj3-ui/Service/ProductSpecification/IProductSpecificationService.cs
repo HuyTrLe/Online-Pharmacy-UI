@@ -13,6 +13,9 @@ namespace pj3_ui.Service.Specification
         IEnumerable<ProductSpecification> CheckSpecCount(ProductSpecification productSpec);
 
         int DeleteProductSpecification(ProductSpecification productSpec);
+
+        int InsertProductSpecificationByID(ProductSpecification productSpec);
         ProductSpecification GetProductSpecificationByID(int ID);
+        
     }
 }

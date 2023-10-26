@@ -68,7 +68,18 @@ namespace pj3_ui.Service.Specification
 
         public ProductSpecification GetProductSpecificationByID(int ID)
         {
-            throw new NotImplementedException();
+            ProductSpecGet productSpecGet = new ProductSpecGet();
+            productSpecGet.ID = ID;
+            var callRespones = CallApi<ProductSpecGet, HttpResultObject>.PostAsJsonAsync(productSpecGet, _appSetting.UrlApi, _appSetting.ProductSpecUrl.GetProductSpecificationByID);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                var result = jObject["Data"].ToObject<ProductSpecification>();
+
+                return result;
+            }
+            return null;
         }
 
         public int InsertProductSpecification(ProductSpecification productSpec)
@@ -81,6 +92,11 @@ namespace pj3_ui.Service.Specification
                 return Convert.ToInt32(jObject["Data"]);
             }
             return 0;
+        }
+
+        public int InsertProductSpecificationByID(ProductSpecification productSpec)
+        {
+            throw new NotImplementedException();
         }
 
         public int UpdateProductSpecification(ProductSpecification productSpec)

@@ -22,7 +22,8 @@
     <script type="text/javascript" src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.css" rel="stylesheet">
-    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+@*    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+*@    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <!--JQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--Sweetalert-->
@@ -112,19 +113,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Category</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="@Url.Action("AdminRegister", "Home")">Register</a>
-                        <a class="collapse-item" href="@Url.Action("AdminForgotPassword", "Home")">Forgot Password</a>
-
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Category:</h6>
+                        <a class="collapse-item" href="@Url.Action("IndexAdmin", "Category")">Category</a>
+                        <a class="collapse-item" href="@Url.Action("InsertCategory", "Category")">Insert Category</a>
                     </div>
                 </div>
             </li>

@@ -4,6 +4,7 @@ using pj3_ui.Models;
 using pj3_ui.Models.Feedback;
 using pj3_ui.Models.Product;
 using pj3_ui.Models.User;
+using pj3_ui.Models.Career;
 
 namespace pj3_ui.Service.Category
 {
@@ -14,9 +15,16 @@ namespace pj3_ui.Service.Category
         {
             _appSetting = appSetting;
         }
-        public int DeleteCategory(CategoryModel Category)
+        public int DeleteCategory(CategoryModel category)
         {
-            throw new NotImplementedException();
+            var callRespones = CallApi<CategoryModel, HttpResultObject>.PostAsJsonAsync(category, _appSetting.UrlApi, _appSetting.CategoryUrl.UpdateCategory);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
         }
 
         public IEnumerable<CategoryModel> GetCategory()
@@ -32,19 +40,26 @@ namespace pj3_ui.Service.Category
             return null;
         }
 
-        public int InsertCategory(CategoryModel Category)
+        public int InsertCategory(CategoryModel category)
         {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateCategory(CategoryModel category)
-        {
-            var callRespones = CallApi<UserModelResult, HttpResultObject>.GetAsJsonAsync(null, _appSetting.UrlApi, _appSetting.CategoryUrl.UpdateCategory);
+            var callRespones = CallApi<CategoryModel, HttpResultObject>.PostAsJsonAsync(category, _appSetting.UrlApi, _appSetting.CategoryUrl.InsertCategory);
             if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
             {
                 string data = JsonConvert.SerializeObject(callRespones.Item1);
                 JObject jObject = JObject.Parse(data);
-                return 1;
+                return Convert.ToInt32(jObject["Data"]);
+            }
+            return 0;
+        }
+
+        public int UpdateCategory(CategoryModel category)
+        {
+            var callRespones = CallApi<CategoryModel, HttpResultObject>.PostAsJsonAsync(category, _appSetting.UrlApi, _appSetting.CategoryUrl.UpdateCategory);
+            if (callRespones.Item2.Code == 200 && callRespones.Item1 != null)
+            {
+                string data = JsonConvert.SerializeObject(callRespones.Item1);
+                JObject jObject = JObject.Parse(data);
+                return Convert.ToInt32(jObject["Data"]);
             }
             return 0;
         }

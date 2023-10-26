@@ -6,12 +6,13 @@ namespace pj3_ui.Service.Category
     {
         int InsertCategory(CategoryModel category);
 
+
         IEnumerable<CategoryModel> GetCategory();
 
 
         int UpdateCategory(CategoryModel category);
 
-        int DeleteCategory(CategoryModel Category);
+        int DeleteCategory(CategoryModel category);
         CategoryModel GetCategoryById(CategoryGet category);
     }
 }
