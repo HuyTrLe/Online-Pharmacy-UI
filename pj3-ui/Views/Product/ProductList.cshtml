@@ -1,0 +1,161 @@
+﻿@model IEnumerable<pj3_ui.Models.Product.ProductModel>
+
+@{
+	ViewBag.Title = "Shop";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!doctype html>
+<html lang="zxx">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>
+		Dentile a Medical Category Bootstrap Responsive Website Template | Shop :: W3layouts
+	</title>
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="~/assets/css/style-starter.css">
+	<!-- Template CSS -->
+	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+	<!-- Template CSS -->
+
+</head>
+
+<body>
+
+	<!-- //w3l-header -->
+	<!-- /breadcrumbs -->
+
+	<nav id="breadcrumbs" class="breadcrumbs">
+		<div class="container page-wrapper">
+			<a href="@Url.Action("Index", "Home")">Home</a> » <span class="breadcrumb_last" aria-current="page">Shop</span>
+		</div>
+	</nav>
+	<!-- //breadcrumbs -->
+	<!-- Shop block 2 -->
+	<div class="w3l-Shop-block py-10" id="classes">
+
+		<div class="ads-grid py-3">
+
+			<div class="container py-md-1 py-1">
+
+				<div class="row">
+					<!-- product right -->
+					<div class="col-lg-3 mt-lg-0 mt-4 p-lg-0 order-lg-first order-last">
+						<div class="side-bar p-sm-4 p-3">
+							<!-- reviews -->
+							<!-- //discounts -->
+							<div class="container">
+								<div class="row">
+									<!-- Danh sách danh mục -->
+									<div class="left-side py-2">
+										<h3 class="agileits-sear-head mb-3">Product List</h3>
+										<ul>
+											@{
+												var category = ViewBag.category;
+												foreach (var item in category)
+												{
+													<li>
+															<a class="category" data-categoryid="@item.ID" > @item.Name</a>
+													</li>
+												}
+											}
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+						<!-- //product right -->
+					</div>
+					<!-- product left -->
+					<div class="agileinfo-ads-display col-lg-9 order-lg-last order-first">
+						<div id="product-list">
+							<!-- first section -->
+							<div class="container py-lg-5 py-md-5">
+
+								<div >
+									<div class="row" id="productlist">		
+										@foreach (var item in Model)
+										{
+
+											<div class="col-lg-4 col-md-6 service_grid_btm_left mt-lg-5 mt-4" >
+
+												<div >
+													<img src="~/assets/images/@item.Thumbnail " alt=" " class="img-fluid" width="300" height="300"/>
+													<div class="service_grid_btm_left2">
+														<h5>@item.Name</h5>
+														<a>Maecenas sodales eu velit in varius. vitae sem vitae urna tempus commodo.</a>
+														<br></br>
+														<div class="read">
+															<a class="btn" href="@Url.Action("ProductDetails", "Product", new { ID = item.ID })">Read More</a>
+														</div>
+													</div>
+
+												</div>
+
+											</div>
+
+
+
+										}
+									</div>
+									</br></br>
+									<div class="row">
+										<div class="col-sm-12 col-md-3"></div>
+										<div class="col-sm-12 col-md-4"></div>
+
+										<div class="col-sm-12 col-md-5">
+											<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+												<ul class="pagination">
+													<li class="paginate_button page-item previous disabled" id="dataTable_previous">
+														<a href="@Url.Action("ProductList", "Product")" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+													</li>
+													<li class="paginate_button page-item active">
+														<a href="@Url.Action("ProductList", "Product")" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+													</li>
+													<li class="paginate_button page-item ">
+														<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+													</li>
+													<li class="paginate_button page-item ">
+														<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">3</a>
+													</li>
+													<li class="paginate_button page-item ">
+														<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">4</a>
+													</li>
+													<li class="paginate_button page-item ">
+														<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">5</a>
+													</li>
+													<a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 5th section -->
+					</div>
+				</div>
+				<!-- //product left -->
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+
+
+</html>
+<script src="~/js/Product/Index.js"></script>
+
+
+
+
+

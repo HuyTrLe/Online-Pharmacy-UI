@@ -1,0 +1,150 @@
+﻿@using pj3_ui.Models.User;
+
+@model UserModelResult
+
+@{
+    ViewBag.Title = "DetailUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <input type="text" class="form-control" placeholder="first name" id="ID" value=@Model.UserModel.ID hidden>
+                    <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" id="UserName" value="@Model.UserModel.UserName"></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="surname" id="Email" value="@Model.UserModel.Email"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" id="PhoneNumber" value="@Model.UserModel.PhoneNumber"></div>
+                    <div class="col-md-12"><label class="labels">Address</label><textarea class="form-control" placeholder="enter address" id="Address">@Model.UserModel.Address</textarea></div>
+                </div>
+                <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                <button id="chooseFileButton">Chọn Tệp PDF</button>
+                <div id="pdfContainer">
+                    <iframe id="pdfViewer" style="width: 100%; height: 400px;"></iframe>
+                </div>
+            </div>
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="btnSaveProfile">Save Profile</button></div>
+        </div>
+        <div class="col-md-7">
+            <div class="p-3 py-5">
+                <button data-toggle="collapse" data-target="#Edu" class="btn btn-info profile-button" id="btnEducation">Education</button>
+                <div id="Edu" class="collapse">
+                <button class="btn btn-success profile-button" style="margin-top:10px" type="button" id="btnAddEducation">Add Education</button>
+                    @{
+                        var index = 1;
+                        foreach (var item in Model.Education)
+                        {
+                            <div class="borderDetail row mt-3 school_@index">
+                                <input type="text" class="form-control" id="ID" value=@item.ID hidden>
+                                <div class="col-md-6"><label class="labels">School Name</label><input type="text" class="form-control" id="SchoolName" value="@item.SchoolName"></div>
+
+                                <div class="col-md-3"><label class="labels">Type</label>
+                                    @if (item.SchoolType == "College")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College " selected>College</option>
+                                                <option value="University ">University</option>
+                                                <option value="Master">Master</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.SchoolType == "University")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College">College</option>
+                                                <option value="University" selected>University</option>
+                                                <option value="Master">Master</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <select class="form-control" id="SchoolType">
+                                                <option value="College">College</option>
+                                                <option value="University" >University</option>
+                                                <option value="Intermediate " selected>Intermediate</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                </div>
+
+                                <div class="col-md-3"><label class="labels">Degree</label>
+                                    @if (item.Degree == "Associate")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree" >
+                                                <option value="Associate" selected>Associate</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.Degree == "Bachelor")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate" >Associate</option>
+                                                <option value="Bachelor" selected>Bachelor</option>
+                                                <option value="Master">Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else if (item.Degree == "Master")
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate">Associate</option>
+                                                <option value="Bachelor" >Bachelor</option>
+                                                <option value="Master" selected>Master</option>
+                                                <option value="Doctoral">Doctoral</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <select class="form-control" id="Degree">
+                                                <option value="Associate">Associate</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                                <option value="Master" >Master</option>
+                                                <option value="Doctoral" selected>Doctoral</option>
+                                            </select>
+                                        </div>
+                                    }                                   
+                                </div>
+                                <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" id="From" value="@item.From.ToString("yyyy-MM-dd")"></div>
+                                <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control" id="To" value="@item.To.ToString("yyyy-MM-dd")"></div>
+                                <div class="col-md-6"><button class="btn btn-primary profile-button btnDelete" data-id=@item.ID data-index=@index style="margin-top:5px">Delete</button></div>
+                            </div>
+                            index++;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/assets/css/User/DetailUpdate.css">
+<link rel="stylesheet" href="~/assets/css/style-starter.css">
+<!-- JS -->
+<script src="~/js/User/DetailUpdate.js"></script>

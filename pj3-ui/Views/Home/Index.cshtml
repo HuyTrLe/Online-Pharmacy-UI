@@ -1,0 +1,306 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+</head>
+<!-- //w3l-header -->
+<!--banner-slider-->
+<!-- main-slider -->
+<section class="w3l-main-slider" id="home">
+    <div class="banner-content">
+        <div class="owl-one owl-carousel owl-theme">
+            <div class="item">
+                <li>
+                    <div class="slider-info banner-view bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h6>Prestige - Quality - Stable pricese</h6>
+                                    <h5>
+                                         Medical technology  Pharmaceuticals 
+                                    </h5>
+                                    <a class="btn mt-sm-5 mt-4" href="@Url.Action("Shop","Home")">View  Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="item">
+                <li>
+                    <div class="slider-info  banner-view banner-top1 bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h6>Prestige - Quality - Stable pricese</h6>
+                                    <h5>
+                                        Medical technology  Pharmaceuticals
+                                    </h5>
+                                    <a class="btn mt-sm-5 mt-4" href="@Url.Action("Shop","Home")">View  Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="item">
+                <li>
+                    <div class="slider-info banner-view banner-top2 bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h6>Prestige - Quality - Stable pricese</h6>
+                                    <h5>
+                                        Medical technology  Pharmaceuticals
+                                    </h5>
+                                    <a class="btn mt-sm-5 mt-4" href="@Url.Action("Shop","Home")">View  Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="item">
+                <li>
+                    <div class="slider-info banner-view banner-top3 bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h6>Prestige - Quality - Stable pricese</h6>
+                                    <h5>
+                                        Medical technology  Pharmaceuticals
+                                    </h5>
+                                    <a class="btn mt-sm-5 mt-4" href="@Url.Action("Shop","Home")">View  Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+        <ul class="slide-social-icons list-unstyled">
+            <li class="share">Share On : </li>
+            <li>
+                <a href="#" class="w3pvt_facebook">
+                    <span class="fa fa-facebook-f"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="w3pvt_twitter">
+                    <span class="fa fa-twitter"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="w3pvt_dribble">
+                    <span class="fa fa-dribbble"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="w3pvt_google">
+                    <span class="fa fa-google-plus"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</section>
+<!-- /main-slider -->
+<!-- //banner-slider-->
+<!-- /content-6-->
+<section class="w3l-content-6">
+    <!-- /content-6-main-->
+    <div class="content-6-mian py-5">
+        <div class="container py-lg-5">
+            <div class="title-content text-left mb-4">
+                <h6 class="sub-title">About Us</h6>
+                <h3 class="hny-title">Welcome to our XYZ Pharma Co.</h3>
+            </div>
+            <div class="content-info-in row">
+                <div class="content-gd col-lg-6 pl-lg-4">
+                    <p>
+                        Ea consequuntur illum facere aperiam sequi optio consectetur adipisicing elitFuga, suscipit
+                        totam animi consequatur saepe blanditiis.Lorem ipsum dolor sit amet,Ea consequuntur illum
+                        facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+                        consequatur saepe blanditiis.
+                    </p>
+                </div>
+                <div class="content-gd col-lg-6 pl-lg-4 pl-lg-4">
+                    <p>
+                        Ea consequuntur illum facere aperiam sequi optio consectetur adipisicing elitFuga, suscipit
+                        totam animi consequatur saepe blanditiis.Lorem ipsum dolor sit amet,Ea consequuntur illum
+                        facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+                        consequatur saepe blanditiis.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+</section>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+</footer>
+<!--//footer-66 -->
+
+
+<script src="~/assets/js/jquery-3.3.1.min.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<!--//-->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!--/scroll-down-JS-->
+<!-- stats -->
+<script src="~/assets/js/jquery.waypoints.min.js"></script>
+<script src="~/assets/js/jquery.countup.js"></script>
+<script>
+    $('.counter').countUp();
+</script>
+<!-- //stats -->
+<script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+
+            fixedContentPos: false,
+            fixedBgPos: true,
+
+            overflowY: 'auto',
+
+            closeBtnInside: true,
+            preloader: false,
+
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+        $('.popup-with-move-anim').magnificPopup({
+            type: 'inline',
+
+            fixedContentPos: false,
+            fixedBgPos: true,
+
+            overflowY: 'auto',
+
+            closeBtnInside: true,
+            preloader: false,
+
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-slide-bottom'
+        });
+    });
+</script>
+<!-- for blog carousel slider -->
+<script src="~/assets/js/owl.carousel.js"></script>
+<!-- script for banner slider-->
+<script>
+    $(document).ready(function () {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: false,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: true
+                },
+                1000: {
+                    items: 1,
+                    nav: true
+                }
+            }
+        })
+    })
+</script>
+<!-- //testimonials owlcarousel -->
+<script>
+    $(document).ready(function () {
+        $('.owl-two').owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: false,
+            responsiveClass: true,
+            autoplay: false,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+</script>
+<!-- //script for Testimonials-->
+<!-- //script -->
+
+<script src="assets/js/bootstrap.min.js"></script>
+
